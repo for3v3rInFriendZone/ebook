@@ -5,16 +5,38 @@
 		.module('ebook-user')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['Restangular', '$anchorScroll'];
-	function UserController(Restangular, $anchorScroll) {
+	UserController.$inject = ['User', '$anchorScroll', '$state'];
+	function UserController(User, $anchorScroll, $state) {
 		var ucr = this;
 		
-		var userRest = Restangular.all('user');
+		ucr.submitForm = submitForm;
+		ucr.focus = focus;
+		ucr.loginFailed = false;
+		ucr.listOfUsers = [];
 		
-		userRest.getList().then(function(users) {
-			  ucr.users = users;
-		});
-
+		function submitForm() {
+			
+			User.getList().then(function(users) {
+				ucr.listOfUsers = users;
+				
+			});
+			
+			for(var i=0; i<ucr.listOfUsers.length; i++) {
+				if(ucr.username === ucr.listOfUsers[i].username) {
+					if(ucr.password === ucr.listOfUsers[i].password) {
+						$state.go('home');
+						return;
+					}
+				}	
+			}
+			
+			ucr.loginFailed = true;
+		}
+		
+		function focus() {
+			ucr.loginFailed = false;
+		}
 		
 	}
+	
 })();
