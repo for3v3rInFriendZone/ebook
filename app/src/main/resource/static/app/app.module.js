@@ -2,5 +2,5 @@
 	"use strict";
 	
 	angular
-		.module('ebook', ['ebook-core', 'ebook-user']);
+		.module('ebook', ['ebook-core', 'ebook-user', 'ebook-admin']);
 })();

@@ -5,8 +5,8 @@
 		.module('ebook-user')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['User', '$anchorScroll', '$state'];
-	function UserController(User, $anchorScroll, $state) {
+	UserController.$inject = ['User', '$anchorScroll', '$state', 'localStorageService'];
+	function UserController(User, $anchorScroll, $state, localStorageService) {
 		var ucr = this;
 		
 		ucr.submitForm = submitForm;
@@ -14,17 +14,19 @@
 		ucr.loginFailed = false;
 		ucr.listOfUsers = [];
 		
+		User.getList().then(function(users) {
+			ucr.listOfUsers = users;
+			
+		});
+		
 		function submitForm() {
-			
-			User.getList().then(function(users) {
-				ucr.listOfUsers = users;
-				
-			});
-			
+
 			for(var i=0; i<ucr.listOfUsers.length; i++) {
 				if(ucr.username === ucr.listOfUsers[i].username) {
 					if(ucr.password === ucr.listOfUsers[i].password) {
-						$state.go('home');
+						var userObject = ucr.listOfUsers[i];
+						localStorageService.set('admin', userObject);
+						$state.go('admin', {username: ucr.username});
 						return;
 					}
 				}	

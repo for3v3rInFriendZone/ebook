@@ -1,0 +1,65 @@
+
+<!-- Header -->
+<section style="background-color: gray;">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+				<br/><br/><br/><br/>
+				<div class="panel panel-info">
+		            <div class="panel-heading text-center">
+		              <h3 class="panel-title">{{acr.nameAndSurname}}</h3>
+		            </div>
+		            
+		            <div class="panel-body">
+		              <div class="row">
+		                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{acr.user.image}}" class="img-circle img-responsive"> </div>
+		                <div class=" col-md-9 col-lg-9 "> 
+		                  <table class="table table-user-information">
+		                    <tbody>
+		                      <tr>
+		                        <td> <b>Firstname: </b> </td>
+		                        <td ng-show="!acr.editFlag">{{acr.user.firstname}}</td>
+		                        <td ng-show="acr.editFlag"><input type="text" ng-model="acr.user.firstname"></td>
+		                      </tr>
+		                      <tr>
+		                        <td><b>Lastname: </b></td>
+		                        <td ng-show="!acr.editFlag">{{acr.user.lastname}}</td>
+		                        <td ng-show="acr.editFlag"><input type="text" ng-model="acr.user.lastname"></td>
+		                      </tr>
+		                      <tr>
+		                        <td><b>Username: </b></td>
+		                        <td>{{acr.user.username}}</td>	                       
+		                      </tr>
+		                      <tr>
+		                        <td><b>Password: </b></td>
+		                        <td ng-show="!acr.editFlag">{{acr.user.password}}</td>
+		                        <td ng-show="acr.editFlag"><input type="text" ng-model="acr.user.password"></td>
+		                      </tr>
+		                        <tr>
+		                        <td><b>Type: </b></td>
+		                        <td>{{acr.user.type}}</td>
+		                      </tr>
+		                      <tr ng-show="acr.editFlag">
+		                        <td> <b>Image: </b></td>
+		                        <td> <input type="text" ng-model="acr.user.image"></td>
+		                      </tr>
+		                        <td><b>Category: </b></td>
+		                        <td>{{acr.user.category.name}}</td>
+		                      </tr>
+		                    </tbody>
+		                  </table>
+		                </div>
+		              </div>
+           			</div>
+           			<div class="panel-footer">
+                        <div class="text-center">     
+                            <button ng-show="!acr.editFlag" type="button" ng-click="acr.edit()" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
+                            <button ng-show="acr.editFlag" type="button" ng-click="acr.done()" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Save"><i class="fa fa-check"></i></button>
+                            <button ng-show="acr.editFlag" type="button" ng-click="acr.cancel()" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Cancel"><i class="fa fa-ban"></i></button>
+                        </div>
+                    </div>
+		        </div>
+			</div>
+		</div>
+	</div>
+</section>

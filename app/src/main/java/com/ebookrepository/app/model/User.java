@@ -39,6 +39,10 @@ public class User {
 	@Column(name = "TYPE")
 	private String type;
 	
+	@NotNull
+	@Column(name = "PROFILE_IMAGE")
+	private String image;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CATEGORY", nullable = false)
 	private Category category;
@@ -47,7 +51,7 @@ public class User {
 		
 	}
 
-	public User(long id, String firstname, String lastname, String username, String password, String type) {
+	public User(long id, String firstname, String lastname, String username, String password, String type, String image) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -55,6 +59,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.type = type;
+		this.image = image;
 	}
 
 	public long getId() {
@@ -112,6 +117,12 @@ public class User {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
-	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 }
