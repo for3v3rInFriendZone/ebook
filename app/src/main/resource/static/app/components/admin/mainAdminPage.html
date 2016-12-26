@@ -9,11 +9,10 @@
 		            <div class="panel-heading text-center">
 		              <h3 class="panel-title">{{acr.nameAndSurname}}</h3>
 		            </div>
-		            
 		            <div class="panel-body">
 		              <div class="row">
 		                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{acr.user.image}}" class="img-circle img-responsive"> </div>
-		                <div class=" col-md-9 col-lg-9 "> 
+		                <div class=" col-md-9 col-lg-9"> 
 		                  <table class="table table-user-information">
 		                    <tbody>
 		                      <tr>
@@ -30,12 +29,11 @@
 		                        <td><b>Username: </b></td>
 		                        <td>{{acr.user.username}}</td>	                       
 		                      </tr>
-		                      <tr>
+		                      <tr ng-show="acr.editFlag">
 		                        <td><b>Password: </b></td>
-		                        <td ng-show="!acr.editFlag">{{acr.user.password}}</td>
-		                        <td ng-show="acr.editFlag"><input type="text" ng-model="acr.user.password"></td>
-		                      </tr>
-		                        <tr>
+		                        <td> <button type="button" ng-click="acr.newPass()" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="bottom" title="New password"><i class="fa fa-pencil"></i></button></td> 
+		                      </tr>	                    
+		                       <tr>
 		                        <td><b>Type: </b></td>
 		                        <td>{{acr.user.type}}</td>
 		                      </tr>

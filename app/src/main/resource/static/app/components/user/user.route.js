@@ -19,6 +19,26 @@
 					controllerAs: "ucr"
 				}
 			}
+		})
+		.state("adminUsers", {
+			url: '/users',
+			views:{
+				navbar: {
+					templateUrl: "app/components/admin/navbar.html",
+					controller: "AdminController",
+					controllerAs: "acr"
+				},
+				main: {
+
+					templateUrl: "app/components/admin/adminUsers.html",
+					controller: "AdminController",
+					controllerAs: "acr"
+				},
+				footer: {
+					templateUrl: "app/components/core/footer.html"
+				}
+			}
 		});
+		
 	}
 })();
