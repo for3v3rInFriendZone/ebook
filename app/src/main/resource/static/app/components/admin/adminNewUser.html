@@ -7,51 +7,48 @@
 				<br/><br/><br/><br/>
 				<div class="panel panel-info">
 		            <div class="panel-heading text-center">
-		              <h3 class="panel-title">{{acr.nameAndSurname}}</h3>
+		              <h3 class="panel-title"> New user </h3>
 		            </div>
 		            <div class="panel-body">
 		              <div class="row">
 		              	<form class="state-form form-horizontal text-center" name="hic.form" novalidate>
 			                <div class="form-group">
-				                <div class="col-sm-8 col-sm-offset-5"> 
-				                  <img class="img-responsive img-circle" alt="User Pic" src="{{acr.user.image}}"  width="150px" height="150px"/>
+				                <div class="col-sm-8 col-sm-offset-3"> 
+				                  <img class="img-responsive img-circle col-sm-offset-3" alt="User Pic" src="{{acr.user.image}}"  width="150px" height="150px"/>
 				                  <br/>
 				                  <label for="firstname" class="col-sm-1 control-label" >Firstname:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    				<label ng-show="!acr.editFlag" for="firstname" class="col-sm-3 control-label">{{acr.user.firstname}}</label>
-						    			 	<input ng-show="acr.editFlag" class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.firstname" id="firstname" name="firstname" required/>
+						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.firstname" id="firstname" name="firstname" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
 						    	</div>
 				              </div>
 				              <div class="form-group">
-				                <div class="col-sm-8 col-sm-offset-5"> 		
+				                <div class="col-sm-8 col-sm-offset-3"> 		
 				                  <label for="firstname" class="col-sm-1 control-label" >Lastname:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    				<label ng-show="!acr.editFlag" for="lastname" class="col-sm-3 control-label">{{acr.user.lastname}}</label>
-						    			 	<input ng-show="acr.editFlag" class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.lastname" id="lastname" name="lastname" required/>
+						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.lastname" id="lastname" name="lastname" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
 						    	</div>
 				              </div>
 				              <div class="form-group">
-				                <div class="col-sm-8 col-sm-offset-5"> 			                  
+				                <div class="col-sm-8 col-sm-offset-3"> 			                  
 				                  <label for="firstname" class="col-sm-1 control-label" >Username:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    				<label ng-show="!acr.editFlag" for="username" class="col-sm-3 control-label">{{acr.user.username}}</label>
-						    			 	<input ng-show="acr.editFlag" class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.username" id="username" name="username" required/>
+						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.username" id="username" name="username" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
 						    	</div>
 				              </div>
-				              <div class="form-group" ng-show="acr.editFlag">
-				                <div class="col-sm-8 col-sm-offset-5"> 			                  
+				              <div class="form-group">
+				                <div class="col-sm-8 col-sm-offset-3"> 			                  
 				                  <label for="firstname" class="col-sm-1 control-label" >Password:</label>
 				                  <div class="col-sm-8">
 						    			<div class="col-sm-4" ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
@@ -62,35 +59,33 @@
 						    	</div>
 				              </div>
 				              <div class="form-group">
-				                <div class="col-sm-8 col-sm-offset-5"> 			                  
+				                <div class="col-sm-8 col-sm-offset-3"> 			                  
 				                  <label for="firstname" class="col-sm-1 control-label" >Type:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    				<label ng-show="!acr.editFlag" for="type" class="col-sm-3 control-label">{{acr.user.type}}</label>
-						    			 	<input ng-show="acr.editFlag" class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.type" id="type" name="type" required/>
+						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.type" id="type" name="type" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
 						    	</div>
 				              </div>
-				              <div class="form-group" ng-show="acr.editFlag">
-				                <div class="col-sm-8 col-sm-offset-5"> 			                  
+				              <div class="form-group" >
+				                <div class="col-sm-8 col-sm-offset-3"> 			                  
 				                  <label for="firstname" class="col-sm-1 control-label">Image:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    			 	<input ng-show="acr.editFlag" class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.image" id="image" name="image" required/>
+						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.image" id="image" name="image" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
 						    	</div>
 				              </div>
 				              <div class="form-group">
-				                <div class="col-sm-8 col-sm-offset-5"> 			                  
+				                <div class="col-sm-8 col-sm-offset-3"> 			                  
 				                  <label for="firstname" class="col-sm-1 control-label" >Category:</label>
 				                  <div class="col-sm-8">
-						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    				<label ng-show="!acr.editFlag" for="category" class="col-sm-4 control-label">{{acr.user.category.name}}</label>
-						    			 	<input ng-show="acr.editFlag" class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.category" id="category" name="category" required/>
+						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">						    			
+						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.category" id="category" name="category" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
@@ -101,11 +96,9 @@
 		              
            			</div>
            			<div class="panel-footer">
-                        <div class="text-center">     
-                            <button ng-show="!acr.editFlag" type="button" ng-click="acr.edit()" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                            <button ng-show="!acr.editFlag && acr.currentState == 'userEdit'" type="button" ng-click="acr.remove(acr.user.id)" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="fa fa-trash"></i></button>
-                            <button ng-show="acr.editFlag" type="button" ng-click="acr.done()" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Save"><i class="fa fa-check"></i></button>
-                            <button ng-show="acr.editFlag" type="button" ng-click="acr.cancel()" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Cancel"><i class="fa fa-ban"></i></button>
+                        <div class="text-center">                          
+                            <button type="button" ng-click="acr.done()" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Save"><i class="fa fa-check"></i></button>
+                            <button type="button" ng-click="acr.cancel()" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Cancel"><i class="fa fa-ban"></i></button>
                         </div>
                     </div>
 		        </div>

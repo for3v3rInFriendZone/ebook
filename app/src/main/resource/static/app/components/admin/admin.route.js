@@ -45,6 +45,24 @@
 					templateUrl: "app/components/core/footer.html"
 				}
 			}
+		})
+		.state("userEdit", {
+			url: '/user/:id',
+			views:{
+				navbar: {
+					templateUrl: "app/components/admin/navbarEmpty.html",
+					controller: "AdminController",
+					controllerAs: "acr"
+				},
+				main: {
+					templateUrl: "app/components/admin/mainAdminPage.html",
+					controller: "AdminController",
+					controllerAs: "acr"
+				},
+				footer: {
+					templateUrl: "app/components/core/footer.html"
+				}
+			}
 		});
 		
 	}

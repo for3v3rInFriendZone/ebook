@@ -47,4 +47,11 @@ public class UserController {
 		userRepo.save(editedUser);
 		return new ResponseEntity<User>(editedUser, HttpStatus.OK);
 	}
+	
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+	public ResponseEntity<User> deleteUser(@PathVariable("id") Long id) {
+
+		userRepo.delete(id);
+		return new ResponseEntity<User>(HttpStatus.OK);
+	}
 }

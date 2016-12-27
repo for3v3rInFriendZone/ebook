@@ -38,6 +38,24 @@
 					templateUrl: "app/components/core/footer.html"
 				}
 			}
+		})
+		.state("newUser", {
+			url: '/user/new',
+			views:{
+				navbar: {
+					templateUrl: "app/components/admin/navbarEmpty.html",
+					controller: "AdminController",
+					controllerAs: "acr"
+				},
+				main: {
+					templateUrl: "app/components/admin/adminNewUser.html",
+					controller: "AdminController",
+					controllerAs: "acr"
+				},
+				footer: {
+					templateUrl: "app/components/core/footer.html"
+				}
+			}
 		});
 		
 	}
