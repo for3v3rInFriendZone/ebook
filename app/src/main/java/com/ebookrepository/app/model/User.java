@@ -51,9 +51,8 @@ public class User {
 		
 	}
 
-	public User(long id, String firstname, String lastname, String username, String password, String type, String image) {
+	public User(String firstname, String lastname, String username, String password, String type, String image) {
 		super();
-		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.username = username;
@@ -64,10 +63,6 @@ public class User {
 
 	public long getId() {
 		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getFirstname() {

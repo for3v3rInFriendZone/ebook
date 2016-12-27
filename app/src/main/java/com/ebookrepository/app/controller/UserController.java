@@ -54,4 +54,11 @@ public class UserController {
 		userRepo.delete(id);
 		return new ResponseEntity<User>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+	public ResponseEntity<User> saveUser(@RequestBody User User) {
+
+		User newUser = userRepo.save(User);
+		return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
+	}
 }

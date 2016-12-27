@@ -21,7 +21,14 @@
 		acr.newUser = newUser;
 		acr.currentState = $state.current.name;
 		acr.editListOfUsers = editListOfUsers;
+		acr.cancelNewUser = cancelNewUser;
+		acr.saveNewUser = saveNewUser;
 		acr.users = [];
+		acr.types = [{id: 1, name: 'Admin'}, {id: 2, name: 'Subscriber'}];
+		
+		Restangular.all('category').getList().then(function(categories) {
+			acr.categories = categories;
+		});
 		
 		
 		if(acr.currentState == 'adminUsers' || acr.currentState == 'admin' || acr.currentState == 'adminPage') {
@@ -173,6 +180,17 @@
 		
 		function newUser() {
 			$state.go('newUser');
+		}
+		
+		function cancelNewUser() {
+			$state.go('adminUsers');
+		}
+		
+		function saveNewUser() {
+			acr.user.type = acr.user.type.name;
+			User.post(acr.user);
+			
+			$state.go('adminUsers');
 		}
 	}
 })();

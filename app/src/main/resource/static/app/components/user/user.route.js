@@ -14,6 +14,9 @@
 			url: '/login',
 			views:{
 				main: {
+					resolve: {
+						users: getUsers
+					},
 					templateUrl: "app/components/user/login.html",
 					controller: "UserController",
 					controllerAs: "ucr"
@@ -58,5 +61,10 @@
 			}
 		});
 		
+		
+		getUsers.$inject = ['User'];
+		function getUsers(User) {
+			return User.query().$promise;
+		}
 	}
 })();

@@ -5,19 +5,14 @@
 		.module('ebook-user')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['User', '$anchorScroll', '$state', 'localStorageService'];
-	function UserController(User, $anchorScroll, $state, localStorageService) {
+	UserController.$inject = ['User', '$anchorScroll', '$state', 'localStorageService', 'users'];
+	function UserController(User, $anchorScroll, $state, localStorageService, users) {
 		var ucr = this;
-		
+		ucr.listOfUsers = users;
 		ucr.submitForm = submitForm;
 		ucr.focus = focus;
 		ucr.loginFailed = false;
-		ucr.listOfUsers = [];
 		
-		User.getList().then(function(users) {
-			ucr.listOfUsers = users;
-			
-		});
 		
 		function submitForm() {
 
