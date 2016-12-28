@@ -11,9 +11,7 @@
 		ccr.goToSection = goToSection;
 		
 		if(localStorageService.get('admin') != null || localStorageService.get('admin') != undefined) {
-			$state.go('admin', {username: localStorageService.get('admin').username});
-		} else if(localStorageService.get('subscriber') != null || localStorageService.get('subscriber') != undefined) {
-			$state.go('subscriber', {username: localStorageService.get('subscriber').username});
+			$state.go('user', {username: localStorageService.get('admin').username});
 		}
 		
 		function goToSection(section) {

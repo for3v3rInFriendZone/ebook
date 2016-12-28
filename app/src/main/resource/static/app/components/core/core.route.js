@@ -11,25 +11,44 @@
 		$urlRouterProvider.otherwise("/home");
 
 		$stateProvider
-		.state("home", {
-			url: '/home',
+		.state("main", {
+			abstract: true,
 			views:{
-				navbar: {
+				'navbar': {
 					templateUrl: "app/components/core/navbar.html",
-					controller: "CoreController",
-					controllerAs: "ccr"
+					controller: "NavbarController",
+					controllerAs: "nbc"
 				},
-				main: {
-					templateUrl: "app/components/core/main.html",
-					controller: "CoreController",
-					controllerAs: "ccr"
+				'footer': {
+					templateUrl: "app/components/core/footer.html"
+				}
+			}
+		})	
+		.state("main.home", {
+			url: "/home",
+			views:{
+				'main@': {
+					templateUrl: "app/components/core/main.html"
 				},
-				footer: {
-					templateUrl: "app/components/core/footer.html",
-					controller: "CoreController",
-					controllerAs: "ccr"
+			}
+		})
+		.state("main.adminUsers", {
+			url: '/users',
+			views:{
+				'main@': {
+					resolve: {
+						listOfUsers: getUsers
+					},
+					templateUrl: "app/components/admin/adminUsers.html",
+					controller: "AdminListUsersController",
+					controllerAs: "aluc"
 				}
 			}
 		});
+		
+		getUsers.$inject = ['User'];
+		function getUsers(User) {
+			return User.query().$promise;
+		}
 	}
 })();

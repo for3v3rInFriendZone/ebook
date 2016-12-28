@@ -39,7 +39,6 @@ public class User {
 	@Column(name = "TYPE")
 	private String type;
 	
-	@NotNull
 	@Column(name = "PROFILE_IMAGE")
 	private String image;
 	
@@ -61,7 +60,7 @@ public class User {
 		this.image = image;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 

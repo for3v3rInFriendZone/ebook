@@ -15,14 +15,14 @@
 	
 	  <div class="login">
 		<h1>Login</h1>
-	    <form class="state-form form-horizontal" name="ucr.form" ng-submit="ucr.submitForm()" novalidate>
+	    <form class="state-form form-horizontal" name="ulc.form" ng-submit="ulc.submitForm()" novalidate>
 	    	<div class="form-group">
 		    	<div>
-			    	<input type="text" name="username" ng-focus="ucr.focus()" ng-model="ucr.username" placeholder="Username" required/>
-			        <input type="password" name="password" ng-focus="ucr.focus()" ng-model="ucr.password" name="p" placeholder="Password" required/>
+			    	<input type="text" name="username" ng-focus="ulc.focus()" ng-model="ulc.username" placeholder="Username" required/>
+			        <input type="password" name="password" ng-focus="ulc.focus()" ng-model="ulc.password" placeholder="Password" required/>
 			    </div>
 		        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
-		        <p class="text-center" ng-show="ucr.loginFailed" style="color: red;"> Your username or password is incorrect.</p>
+		        <p class="text-center" ng-show="ulc.loginFailed" style="color: red;"> Your username or password is incorrect.</p>
 		    </div>
 	    </form>
 	</div>

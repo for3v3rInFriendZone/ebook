@@ -14,12 +14,13 @@
 		              	<form class="state-form form-horizontal text-center" name="hic.form" novalidate>
 			                <div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-3"> 
-				                  <img class="img-responsive img-circle col-sm-offset-3" alt="User Pic" src="{{acr.user.image}}"  width="150px" height="150px"/>
+				                  <img ng-show="auc.user.image" class="img-responsive img-circle col-sm-offset-3" alt="User Pic" src="{{auc.user.image}}"  width="150px" height="150px"/>
+				                  <img ng-show="!auc.user.image" class="img-responsive img-circle col-sm-offset-3" alt="User Pic" src="https://diasp.eu/assets/user/default.png"  width="150px" height="150px"/>
 				                  <br/>
 				                  <label for="firstname" class="col-sm-1 control-label" >Firstname:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.firstname" id="firstname" name="firstname" required/>
+						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="auc.user.firstname" id="firstname" name="firstname" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
@@ -30,7 +31,7 @@
 				                  <label for="lastname" class="col-sm-1 control-label" >Lastname:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.lastname" id="lastname" name="lastname" required/>
+						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="auc.user.lastname" id="lastname" name="lastname" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
@@ -41,7 +42,7 @@
 				                  <label for="username" class="col-sm-1 control-label" >Username:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.username" id="username" name="username" required/>
+						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="auc.user.username" id="username" name="username" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
@@ -52,7 +53,7 @@
 				                  <label for="password" class="col-sm-1 control-label" >Password:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    				<input class="col-sm-offset-1 form-control" type="password" ng-model="acr.user.password" id="password" name="password" required/>
+						    				<input class="col-sm-offset-1 form-control" type="password" ng-model="auc.user.password" id="password" name="password" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
@@ -63,7 +64,7 @@
 				                  <label for="retypePassword" class="col-sm-1 control-label" >Retype password:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    				<input class="col-sm-offset-1 form-control" type="password" ng-model="acr.user.retypePassword" id="retypePassword" name="retypePassword" required/>
+						    				<input class="col-sm-offset-1 form-control" type="password" ng-model="auc.retypePassword" id="retypePassword" name="retypePassword" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
@@ -74,7 +75,7 @@
 				                  <label for="firstname" class="col-sm-1 control-label" >Type:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    			 	<select class="form-control col-sm-offset-1" name="chooseType" ng-options="type.name for type in acr.types track by type.name" ng-model="acr.user.type" required>
+						    			 	<select class="form-control col-sm-offset-1" name="chooseType" ng-options="type.name for type in auc.types track by type.name" ng-model="auc.user.type" required>
 											</select>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
@@ -86,7 +87,7 @@
 				                  <label for="firstname" class="col-sm-1 control-label">Image:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
-						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="acr.user.image" id="image" name="image" required/>
+						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="auc.user.image" id="image" name="image" required/>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 						    	  </div>
@@ -97,7 +98,7 @@
 				                  <label for="firstname" class="col-sm-1 control-label" >Category:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">						    			
-						    			 	<select class="form-control col-sm-offset-1" name="chooseCategory" ng-options="category.name for category in acr.categories track by category.name" ng-model="acr.user.category" required>
+						    			 	<select class="form-control col-sm-offset-1" name="chooseCategory" ng-options="category.name for category in auc.categories track by category.name" ng-model="auc.user.category" required>
 											</select>
 						    			</div>
 						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
@@ -110,8 +111,8 @@
            			</div>
            			<div class="panel-footer">
                         <div class="text-center">                          
-                            <button type="button" ng-click="acr.saveNewUser()" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Save"><i class="fa fa-check"></i></button>
-                            <button type="button" ng-click="acr.cancelNewUser()" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Cancel"><i class="fa fa-ban"></i></button>
+                            <button type="button" ng-click="auc.saveNewUser()" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Save"><i class="fa fa-check"></i></button>
+                            <button type="button" ng-click="auc.cancelNewUser()" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Cancel"><i class="fa fa-ban"></i></button>
                         </div>
                     </div>
 		        </div>
