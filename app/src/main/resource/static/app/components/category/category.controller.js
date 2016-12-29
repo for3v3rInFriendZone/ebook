@@ -5,8 +5,8 @@
 		.module('ebook-category')
 		.controller('CategoryController', CategoryController);
 
-	CategoryController.$inject = ['localStorageService', '$state', 'category', 'title'];
-	function CategoryController(localStorageService, $state, category, title) {
+	CategoryController.$inject = ['localStorageService', '$state', 'category', 'title', '$fancyModal'];
+	function CategoryController(localStorageService, $state, category, title, $fancyModal) {
 		
 		var ccr = this;	
 		
@@ -23,16 +23,26 @@
 		}
 		
 		function done() {
+			ccr.submitted = true;
+			if(ccr.form.$invalid) {
+				return;
+			}
+			
 			ccr.category.$saveOrUpdate(cancel);
 		}
 		
 		function remove() {
-			ccr.category.$delete({id: ccr.category.id}, cancel, anotherCategory);
+			ccr.category.$delete({id: ccr.category.id}, successRemoveModal, anotherCategory);
 		}
 		
 		function anotherCategory() {
 			ccr.anotherCategoryFlag = true;
 			return;
+		}
+		
+		function successRemoveModal() {
+			alert('Category with id: '+ ccr.category.id + ' has been successfully removed.');
+			$state.go('main.listCategory');
 		}
 		
 	}

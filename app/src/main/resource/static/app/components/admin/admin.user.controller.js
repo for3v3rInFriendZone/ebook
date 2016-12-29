@@ -25,6 +25,12 @@
 		}
 		
 		function saveNewUser() {
+			auc.submitted = true;
+			if(auc.form.$invalid) {
+				return;
+			}
+			
+			
 			auc.user.type = auc.user.type.name;
 			if(auc.user.image == null || auc.user.image == undefined || auc.user.image == '') {
 				auc.user.image = 'https://diasp.eu/assets/user/default.png';

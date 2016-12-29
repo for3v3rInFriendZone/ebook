@@ -19,11 +19,12 @@
 				                  <hr/>
 				                  <label for="name" class="col-sm-1 control-label" >Name:</label>
 				                  <div class="col-sm-8">
-						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
+						    			<div ng-class="{'has-error': ccr.form.name.$error.required && ccr.submitted}">
 						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="ccr.category.name" id="name" name="name" required/>
 						    			</div>
 						    			<hr ng-show="ccr.anotherCategoryFlag"/>
-						    			<p class="text-center" ng-show="ccr.anotherCategoryFlag" style="color: red;">This category is being used in user's category.If you realy want to remove it, please go to that users and switch to another category.</p>
+						    			<p class="text-center" ng-show="ccr.anotherCategoryFlag" style="color: red; font-size: 14px;">This category is being used in user's category.If you realy want to remove it, please go to that users and switch to another category.</p>
+						    			<p class="text-center" ng-show="ccr.form.name.$error.required && ccr.submitted" style="color: red; font-size: 14px;">Name is required.</p>
 						    			<hr ng-show="ccr.anotherCategoryFlag"/>
 						    	  </div>
 						    	</div>

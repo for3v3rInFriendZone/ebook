@@ -20,11 +20,15 @@
 				                    <tbody>
 				                      <tr>
 				                        <td> <b>Firstname: </b> </td>
-				                        <td><input type="text" class="form-control" ng-model="uec.user.firstname"></td>
+				                        <td ng-class="{'has-error': uec.form.firstname.$error.required && uec.submitted}"><input type="text" name="firstname" class="form-control" ng-model="uec.user.firstname" required/>
+				                        	<p class="text-center" ng-show="uec.form.firstname.$error.required && uec.submitted" style="color: red; font-size: 14px;">Firstname is required.</p>
+				                        </td>
 				                      </tr>
 				                      <tr>
 				                        <td><b>Lastname: </b></td>
-				                        <td><input type="text" class="form-control" ng-model="uec.user.lastname"></td>
+				                        <td ng-class="{'has-error': uec.form.lastname.$error.required && uec.submitted}"><input type="text" name="lastname" class="form-control" ng-model="uec.user.lastname" required/>
+				                        	<p class="text-center" ng-show="uec.form.lastname.$error.required && uec.submitted" style="color: red; font-size: 14px;">Lastname is required.</p>
+				                        </td>
 				                      </tr>
 				                      <tr>
 				                        <td><b>Username: </b></td>
@@ -43,7 +47,7 @@
 				                        <td> <input type="text" class="form-control" ng-model="uec.user.image"></td>
 				                      </tr>
 				                        <td><b>Category: </b></td>
-				                        <td> <select class="form-control" name="chooseCategory" ng-options="category.name for category in uec.categories track by category.name" ng-model="uec.user.category">
+				                        <td> <select class="form-control" name="chooseCategory" ng-options="category.name for category in uec.categories track by category.name" ng-model="uec.user.category" required>
 											 </select> 
 										</td>
 				                      </tr>

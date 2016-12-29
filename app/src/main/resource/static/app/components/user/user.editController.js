@@ -34,6 +34,11 @@
 		}
 		
 		function done() {
+			uec.submitted = true;
+			if(uec.form.$invalid) {
+				return;
+			}
+			
 			if(localStorageService.get('newPassword') !== null && localStorageService.get('newPassword') !== undefined && localStorageService.get('newPassword') != '') {
 				if(localStorageService.get('newPassword') != uec.user.password) {
 					uec.user.password = localStorageService.get('newPassword');
@@ -47,7 +52,16 @@
 		}
 		
 		function remove() {
-			uec.user.$delete({id: uec.user.id}, cancel);
+			uec.user.$delete({id: uec.user.id}, successRemove);
+		}
+		
+		function successRemove() {
+			alert('User with id: '+ uec.user.id + ' has been successfully removed.');
+			if($state.current.name == 'main.usersEdit') {
+				$state.go('main.adminUsers');
+				return;
+			} 
+			$state.go('main.userPage', {username: uec.user.username});
 		}
 	}
 	
