@@ -10,7 +10,8 @@
 
 		var categoryService = $resource('/category/:id',
 			{id: "@_id"},
-			{ update: { method: 'PUT' } });
+			{ update: { method: 'PUT' } },
+			{ delete: { method: 'DELETE', params: {id: "@_id"}}});
 
 		//Mogli smo da ekstendujemo companyService, pa da onda u kontroleru koristimo Company.$saveOrUpdate(cc.company, successCallback)
 		//Kada extendujemo prototip onda kažemo da će ovu metodu imati svaka instanca companyService-a.

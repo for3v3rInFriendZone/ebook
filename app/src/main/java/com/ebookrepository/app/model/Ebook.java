@@ -24,7 +24,7 @@ public class Ebook implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@NotNull
 	@Column(name = "TITLE")
@@ -62,10 +62,9 @@ public class Ebook implements Serializable{
 		
 	}
 
-	public Ebook(long id, String title, String author, String keywords, Integer publication_year, String filename,
+	public Ebook(String title, String author, String keywords, Integer publication_year, String filename,
 			String mime) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.author = author;
 		this.keywords = keywords;
@@ -74,12 +73,8 @@ public class Ebook implements Serializable{
 		this.mime = mime;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getTitle() {
