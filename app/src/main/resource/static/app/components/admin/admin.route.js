@@ -15,7 +15,8 @@
 			views:{
 				'main@': {
 					resolve: {
-						selectedUser: getUserToEdit	
+						selectedUser: getUserToEdit,
+						categories: getCategories
 					},
 					templateUrl: "app/components/user/user.editUser.html",
 					controller: "UserEditController",

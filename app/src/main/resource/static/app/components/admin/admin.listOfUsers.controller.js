@@ -13,6 +13,16 @@
 		aluc.editListOfUsers = editListOfUsers;
 		aluc.users = listOfUsers;
 		
+		/**
+		 * Dont show a loged user in list of users.
+		 */
+		for(var i=0; i<aluc.users.length; i++) {
+			if(aluc.users[i].id === localStorageService.get('user').id) {
+				aluc.users.splice(i, 1);
+				break;
+			}
+		}
+		
 		function editListOfUsers(id) {	
 			
 			$state.go('main.usersEdit', {id:id});

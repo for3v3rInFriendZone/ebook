@@ -22,7 +22,9 @@
 						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
 						    			 	<input class="col-sm-offset-1 form-control" type="text" ng-model="ccr.category.name" id="name" name="name" required/>
 						    			</div>
-						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
+						    			<hr ng-show="ccr.anotherCategoryFlag"/>
+						    			<p class="text-center" ng-show="ccr.anotherCategoryFlag" style="color: red;">This category is being used in user's category.If you realy want to remove it, please go to that users and switch to another category.</p>
+						    			<hr ng-show="ccr.anotherCategoryFlag"/>
 						    	  </div>
 						    	</div>
 				              </div>			             			                

@@ -5,8 +5,8 @@
 		.module('ebook-user')
 		.controller('UserEditController', UserEditController);
 
-	UserEditController.$inject = ['User', '$state', 'localStorageService', '$fancyModal', 'selectedUser'];
-	function UserEditController(User, $state, localStorageService, $fancyModal, selectedUser) {
+	UserEditController.$inject = ['User', '$state', 'localStorageService', '$fancyModal', 'selectedUser', 'categories'];
+	function UserEditController(User, $state, localStorageService, $fancyModal, selectedUser, categories) {
 		
 		var uec = this;
 		uec.user = selectedUser;
@@ -15,6 +15,7 @@
 		uec.newPass = newPass;
 		uec.done = done;
 		uec.remove = remove;
+		uec.categories = categories;
 		
 		uec.nameAndSurname = uec.user.firstname + ' ' + uec.user.lastname;
 		
@@ -39,7 +40,9 @@
 					localStorageService.remove('newPassword');
 				}
 			}
-			localStorageService.set('user', uec.user);
+			if(uec.user.id === localStorageService.get('user').id){
+				localStorageService.set('user', uec.user);
+			}
 			uec.user.$saveOrUpdate(cancel);
 		}
 		

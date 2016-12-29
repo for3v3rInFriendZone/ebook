@@ -1,0 +1,22 @@
+<div class="modal-header">
+	<h2 class="text-center" style="color: lightblue;"> Change category </h2>
+</div>
+<div class="modal-body">
+	<form class="state-form form-horizontal text-center" name="ucr.modalForm" novalidate>
+		<table class="table table-hover">
+			<tbody class="text-center">
+				<tr>
+					<td> <b>Choose category:</b> </td>
+					<td> <select class="form-control" name="chooseCategory" ng-options="category.name for category in ucr.categories track by category.name" ng-model="ucr.newCate">
+						</select>
+					</td> 
+				</tr>			
+			</tbody>
+		</table>
+	</form>
+<div class="modal-footer">
+	<div class="text-center">
+		<button class="btn btn-success" ng-click="ucr.saveCategory()"> <i class="fa fa-check"></i></button>
+		<button class="btn btn-danger" ng-click="ucr.closeModal()"> <i class="fa fa-ban"></i></button>
+	</div>
+</div>

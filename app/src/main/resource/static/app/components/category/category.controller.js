@@ -16,6 +16,7 @@
 		ccr.cancel = cancel;
 		ccr.done = done;
 		ccr.remove = remove;
+		ccr.anotherCategory = anotherCategory;
 		
 		function cancel() {
 			$state.go('main.listCategory');
@@ -26,7 +27,12 @@
 		}
 		
 		function remove() {
-			ccr.category.$delete({id: ccr.category.id}, cancel);
+			ccr.category.$delete({id: ccr.category.id}, cancel, anotherCategory);
+		}
+		
+		function anotherCategory() {
+			ccr.anotherCategoryFlag = true;
+			return;
 		}
 		
 	}

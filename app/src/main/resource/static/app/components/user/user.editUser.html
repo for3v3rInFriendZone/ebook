@@ -43,7 +43,9 @@
 				                        <td> <input type="text" class="form-control" ng-model="uec.user.image"></td>
 				                      </tr>
 				                        <td><b>Category: </b></td>
-				                        <td>{{uec.user.category.name}}</td>
+				                        <td> <select class="form-control" name="chooseCategory" ng-options="category.name for category in uec.categories track by category.name" ng-model="uec.user.category">
+											 </select> 
+										</td>
 				                      </tr>
 				                    </tbody>
 		                  		</table>

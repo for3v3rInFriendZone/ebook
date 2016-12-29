@@ -48,7 +48,8 @@
 			views:{
 				'main@': {
 					resolve: {
-						selectedUser: getUserToEdit
+						selectedUser: getUserToEdit,
+						categories: getCategories
 					},
 					templateUrl: "app/components/user/user.editUser.html",
 					controller: "UserEditController",
@@ -66,6 +67,11 @@
 		getUserToEdit.$inject = ['User', '$stateParams'];
 		function getUserToEdit(User, $stateParams) {
 			return User.get({id: $stateParams.id}).$promise;
+		}
+		
+		getCategories.$inject = ['Category'];
+		function getCategories(Category) {
+			return Category.query().$promise;
 		}
 	}
 })();
