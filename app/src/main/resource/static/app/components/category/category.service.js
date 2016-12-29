@@ -2,20 +2,20 @@
 	"use strict";
 
 	angular
-		.module('ebook-user')
-		.factory('User', User);
+		.module('ebook-admin')
+		.factory('Category', Category);
 
-	User.$inject = ['$resource'];
-	function User($resource) {
+	Category.$inject = ['$resource'];
+	function Category($resource) {
 
-		var userService = $resource('/user/:id',
+		var categoryService = $resource('/category/:id',
 			{id: "@_id"},
 			{ update: { method: 'PUT' } },
 			{ delete: { method: 'DELETE', params: {id: "@_id"}}});
 
 		//Mogli smo da ekstendujemo companyService, pa da onda u kontroleru koristimo Company.$saveOrUpdate(cc.company, successCallback)
 		//Kada extendujemo prototip onda kažemo da će ovu metodu imati svaka instanca companyService-a.
-		angular.extend(userService.prototype, {
+		angular.extend(categoryService.prototype, {
 			$saveOrUpdate: function(successCallback) {
 				if(!this._id) {
 					this.$save(successCallback);
@@ -24,6 +24,6 @@
 				}
 			}
 		});
-		return userService;
+		return categoryService;
 	}
 })();

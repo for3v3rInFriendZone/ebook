@@ -5,35 +5,36 @@
 		.module('ebook-user')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['User', '$anchorScroll', '$state', 'localStorageService', 'users'];
-	function UserController(User, $anchorScroll, $state, localStorageService, users) {
+	UserController.$inject = ['User', '$state', 'localStorageService', '$fancyModal'];
+	function UserController(User, $state, localStorageService, $fancyModal) {
+		
 		var ucr = this;
-		ucr.listOfUsers = users;
-		ucr.submitForm = submitForm;
-		ucr.focus = focus;
-		ucr.loginFailed = false;
+		ucr.user = localStorageService.get('user');
+		ucr.currentState = $state.current.name;
+		ucr.edit = edit;
+		ucr.closeModal = closeModal;
+		ucr.savePass = savePass;
 		
+		ucr.nameAndSurname = ucr.user.firstname + ' ' + ucr.user.lastname;
 		
-		function submitForm() {
-
-			for(var i=0; i<ucr.listOfUsers.length; i++) {
-				if(ucr.username === ucr.listOfUsers[i].username) {
-					if(ucr.password === ucr.listOfUsers[i].password) {
-						var userObject = ucr.listOfUsers[i];
-						localStorageService.set('admin', userObject);
-						$state.go('admin', {username: ucr.username});
-						return;
-					}
-				}	
-			}
+		function edit() {
+			$state.go('main.userEdit', {username: ucr.user.username, id: ucr.user.id});
+		}
+		
+		function closeModal() {
+			$fancyModal.close(); 
+		}
+		
+		function savePass() {
 			
-			ucr.loginFailed = true;
+			if(ucr.newPassword == ucr.rePass) {
+				localStorageService.set('newPassword', ucr.newPassword);
+			} else {
+				ucr.notEqualPass = true;
+				return;
+			}
+			$fancyModal.close(); 
 		}
-		
-		function focus() {
-			ucr.loginFailed = false;
-		}
-		
 	}
 	
 })();

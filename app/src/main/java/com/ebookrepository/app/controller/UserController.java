@@ -56,9 +56,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<User> saveUser(@RequestBody User User) {
+	public ResponseEntity<User> saveUser(@RequestBody User user) {
 
-		User newUser = userRepo.save(User);
+		User newUser = userRepo.save(user);
 		return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
 	}
 }

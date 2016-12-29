@@ -2,5 +2,5 @@
 	"use strict";
 	
 	angular
-		.module('ebook-user', ['ui.router', 'restangular', 'LocalStorageModule', 'ngResource']);
+		.module('ebook-user', ['ui.router', 'LocalStorageModule', 'ngResource', 'vesparny.fancyModal']);
 })();

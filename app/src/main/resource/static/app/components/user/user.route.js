@@ -13,50 +13,46 @@
 		.state("login", {
 			url: '/login',
 			views:{
-				main: {
+				'main@': {
 					resolve: {
 						users: getUsers
 					},
 					templateUrl: "app/components/user/login.html",
+					controller: "LoginController",
+					controllerAs: "ulc"
+				}
+			}
+		})
+		.state("main.user", {
+			url: '/:username',
+			views:{
+				'main@': {
+					templateUrl: "app/components/user/main.html",
 					controller: "UserController",
 					controllerAs: "ucr"
 				}
 			}
 		})
-		.state("adminUsers", {
-			url: '/users',
+		.state("main.userPage", {
+			url: '/profile/:username',
 			views:{
-				navbar: {
-					templateUrl: "app/components/admin/navbar.html",
-					controller: "AdminController",
-					controllerAs: "acr"
-				},
-				main: {
-
-					templateUrl: "app/components/admin/adminUsers.html",
-					controller: "AdminController",
-					controllerAs: "acr"
-				},
-				footer: {
-					templateUrl: "app/components/core/footer.html"
+				'main@': {
+					templateUrl: "app/components/user/mainUserPage.html",
+					controller: "UserController",
+					controllerAs: "ucr"
 				}
 			}
 		})
-		.state("newUser", {
-			url: '/user/new',
+		.state("main.userEdit", {
+			url: '/profile/:username/:id',
 			views:{
-				navbar: {
-					templateUrl: "app/components/admin/navbarEmpty.html",
-					controller: "AdminController",
-					controllerAs: "acr"
-				},
-				main: {
-					templateUrl: "app/components/admin/adminNewUser.html",
-					controller: "AdminController",
-					controllerAs: "acr"
-				},
-				footer: {
-					templateUrl: "app/components/core/footer.html"
+				'main@': {
+					resolve: {
+						selectedUser: getUserToEdit
+					},
+					templateUrl: "app/components/user/user.editUser.html",
+					controller: "UserEditController",
+					controllerAs: "uec"
 				}
 			}
 		});
@@ -65,6 +61,11 @@
 		getUsers.$inject = ['User'];
 		function getUsers(User) {
 			return User.query().$promise;
+		}
+		
+		getUserToEdit.$inject = ['User', '$stateParams'];
+		function getUserToEdit(User, $stateParams) {
+			return User.get({id: $stateParams.id}).$promise;
 		}
 	}
 })();
