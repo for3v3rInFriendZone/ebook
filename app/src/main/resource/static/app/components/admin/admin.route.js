@@ -30,7 +30,8 @@
 				'main@': {
 					resolve: {
 						selectedUser: getNewUser,
-						categories: getCategories
+						categories: getCategories,
+						listOfUsers: getUsers		
 					},
 					templateUrl: "app/components/admin/adminNewUser.html",
 					controller: "AdminUserController",
@@ -52,6 +53,11 @@
 		getCategories.$inject = ['Category'];
 		function getCategories(Category) {
 			return Category.query().$promise;
+		}
+		
+		getUsers.$inject = ['User'];
+		function getUsers(User) {
+			return User.query().$promise;
 		}
 	}
 })();

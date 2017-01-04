@@ -29,7 +29,7 @@
            			</div>
            			<div class="panel-footer">
                         <div class="text-center">                               
-                            <button type="button" ng-click="clc.newCategory()" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="New category"><i class="fa fa-plus" style="font-size: 24px;"></i></button>                    
+                            <button type="button" ng-show="clc.user.type == 'admin'" ng-click="clc.newCategory()" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="New category"><i class="fa fa-plus" style="font-size: 24px;"></i></button>                    
                         </div>
                     </div>
 		        </div>

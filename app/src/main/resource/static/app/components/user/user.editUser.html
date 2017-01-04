@@ -14,7 +14,7 @@
 		              	<form class="state-form form-horizontal text-center" name="uec.form" novalidate>
 			                <div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-2"> 
-				                  <img class="img-responsive img-circle col-sm-offset-5" alt="User Pic" src="{{uec.user.image}}"  width="150px" height="150px"/>
+				                  <img class="img-responsive img-circle col-sm-offset-5" alt="User Pic" src="{{uec.user.image}}"  width="110px" height="110px"/>
 				                  <br/>
 				                  <table class="table table-user-information">
 				                    <tbody>
@@ -47,7 +47,7 @@
 				                        <td> <input type="text" class="form-control" ng-model="uec.user.image"></td>
 				                      </tr>
 				                        <td><b>Category: </b></td>
-				                        <td> <select class="form-control" name="chooseCategory" ng-options="category.name for category in uec.categories track by category.name" ng-model="uec.user.category" required>
+				                        <td> <select class="form-control" name="chooseCategory" ng-options="category.name for category in uec.categories track by category.name" ng-model="uec.user.category">
 											 </select> 
 										</td>
 				                      </tr>

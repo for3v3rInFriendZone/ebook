@@ -43,7 +43,7 @@ public class User {
 	private String image;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "CATEGORY", nullable = false)
+	@JoinColumn(name = "CATEGORY", nullable = true)
 	private Category category;
 	
 	public User() {

@@ -9,6 +9,7 @@
 	function CategoryListController(localStorageService, $state, categories) {
 		
 		var clc = this;	
+		clc.user = localStorageService.get('user');
 		clc.categories = categories;
 		clc.newCategory = newCategory;
 		clc.editCategory = editCategory;
@@ -18,7 +19,10 @@
 		}
 		
 		function editCategory(id) {
-			$state.go('main.editCategory', {id: id});
+			if(clc.user.type == 'admin') {
+				$state.go('main.editCategory', {id: id});
+			}
+			
 		}
 		
 	}
