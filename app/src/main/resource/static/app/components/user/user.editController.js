@@ -5,8 +5,8 @@
 		.module('ebook-user')
 		.controller('UserEditController', UserEditController);
 
-	UserEditController.$inject = ['User', '$state', 'localStorageService', '$fancyModal', 'selectedUser', 'categories'];
-	function UserEditController(User, $state, localStorageService, $fancyModal, selectedUser, categories) {
+	UserEditController.$inject = ['$scope', 'User', '$state', 'localStorageService', '$fancyModal', 'selectedUser', 'categories'];
+	function UserEditController($scope, User, $state, localStorageService, $fancyModal, selectedUser, categories) {
 		
 		var uec = this;
 		uec.user = selectedUser;
@@ -16,6 +16,7 @@
 		uec.done = done;
 		uec.remove = remove;
 		uec.categories = categories;
+		//uec.pdfUpload = pdfUpload;
 		
 		uec.nameAndSurname = uec.user.firstname + ' ' + uec.user.lastname;
 		
@@ -48,6 +49,11 @@
 			if(uec.user.id === localStorageService.get('user').id){
 				localStorageService.set('user', uec.user);
 			}
+			if(uec.user.image.indexOf('image') == -1) {
+            	uec.notAnImage = true;
+            	return;
+            }
+			
 			uec.user.$saveOrUpdate(cancel);
 		}
 		
@@ -63,6 +69,19 @@
 			} 
 			$state.go('main.userPage', {username: uec.user.username});
 		}
+		
+		/*
+		function pdfUpload() {
+			//var f = document.getElementById('file').files[0],
+			var f = uec.filePdf;
+		      r = new FileReader();
+		  r.onloadend = function(e){
+		    var data = e.target.result;
+		    //send your binary data via $http or $resource or do anything else with it
+		  }
+		   r.readAsArrayBuffer(f);
+		}
+		*/
 	}
 	
 })();

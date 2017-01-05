@@ -2,5 +2,5 @@
 	"use strict";
 	
 	angular
-		.module('ebook-core', ['ui.router', 'LocalStorageModule']);
+		.module('ebook-core', ['ui.router', 'LocalStorageModule', 'ui.bootstrap']);
 })();

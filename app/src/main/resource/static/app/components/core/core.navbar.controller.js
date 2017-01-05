@@ -5,9 +5,10 @@
 		.module('ebook-core')
 		.controller('NavbarController', NavbarController);
 
-	NavbarController.$inject = ['$location', '$anchorScroll', '$state', 'localStorageService'];
-	function NavbarController($location, $anchorScroll, $state, localStorageService) { 
+	NavbarController.$inject = ['$state', 'localStorageService'];
+	function NavbarController($state, localStorageService) { 
 		var nbc = this;
+		
 		nbc.userPage = userPage;
 		nbc.goToAdminUsers = goToAdminUsers;
 		nbc.currentState = $state.current.name;

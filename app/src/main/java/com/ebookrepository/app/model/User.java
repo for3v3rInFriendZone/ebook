@@ -39,7 +39,7 @@ public class User {
 	@Column(name = "TYPE")
 	private String type;
 	
-	@Column(name = "PROFILE_IMAGE")
+	@Column(name = "PROFILE_IMAGE", length=10485760)
 	private String image;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

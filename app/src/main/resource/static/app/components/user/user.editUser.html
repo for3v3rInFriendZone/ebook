@@ -14,7 +14,7 @@
 		              	<form class="state-form form-horizontal text-center" name="uec.form" novalidate>
 			                <div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-2"> 
-				                  <img class="img-responsive img-circle col-sm-offset-5" alt="User Pic" src="{{uec.user.image}}"  width="110px" height="110px"/>
+				                  <img class="img-responsive img-circle col-sm-offset-5" alt="User Pic" src="{{uec.user.image}}"  width="110" height="110"/>
 				                  <br/>
 				                  <table class="table table-user-information">
 				                    <tbody>
@@ -44,7 +44,10 @@
 				                      </tr>
 				                      <tr>
 				                        <td> <b>Image: </b></td>
-				                        <td> <input type="text" class="form-control" ng-model="uec.user.image"></td>
+				                        <td> 
+				                        	<input class="btn btn-info" type="file" fileread="uec.user.image"/>
+				                        	<p class="text-center" ng-show="uec.notAnImage" style="color: red; font-size: 14px;">You did not uploaded an image.</p>
+										</td>
 				                      </tr>
 				                        <td><b>Category: </b></td>
 				                        <td> <select class="form-control" name="chooseCategory" ng-options="category.name for category in uec.categories track by category.name" ng-model="uec.user.category">

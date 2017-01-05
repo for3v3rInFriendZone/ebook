@@ -8,4 +8,3 @@ INSERT INTO ebookuser (firstname, lastname, username, user_password, type, profi
 INSERT INTO ebookuser (firstname, lastname, username, user_password, type, profile_image, category) VALUES ('sadasd', 'sadasd', 'fdf', 'fdgfd', 'subscriber', 'http://images.clipartpanda.com/visitor-clipart-61819-orange-man-tourist.jpg', 1);
 INSERT INTO ebookuser (firstname, lastname, username, user_password, type, profile_image, category) VALUES ('sad', 'ivanovic', 'sadasd', 'sadsa', 'admin', 'http://images.clipartpanda.com/visitor-clipart-61819-orange-man-tourist.jpg', 1);
 INSERT INTO ebookuser (firstname, lastname, username, user_password, type, profile_image, category) VALUES ('sadsa', 'ivanovic', 'sadasd', 'asdsa', 'admin', 'http://www.che.boun.edu.tr/images/People/personnel/user-f.png', 1);
-
