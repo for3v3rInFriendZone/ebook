@@ -49,10 +49,13 @@
 			if(uec.user.id === localStorageService.get('user').id){
 				localStorageService.set('user', uec.user);
 			}
-			if(uec.user.image.indexOf('image') == -1) {
-            	uec.notAnImage = true;
-            	return;
-            }
+			if(uec.user.image != null && uec.user.image != undefined && uec.user.image != '') {
+				if(uec.user.image.indexOf('image') == -1) {
+	            	uec.notAnImage = true;
+	            	return;
+	            }
+			}
+			
 			
 			uec.user.$saveOrUpdate(cancel);
 		}

@@ -1,0 +1,46 @@
+(function() {
+	'use strict';
+
+	angular
+		.module('ebook-book')
+		.controller('BookController', BookController);
+
+	BookController.$inject = ['localStorageService', '$state', 'book', 'title', 'users', 'categories', 'languages'];
+	function BookController(localStorageService, $state, book, title, users, categories, languages) {
+		
+		var bcr = this;	
+		
+		bcr.book = book;
+		bcr.title = title;
+		bcr.users = users;
+		bcr.categories = categories;
+		bcr.languages = languages;
+		bcr.currentState = $state.current.name;
+		bcr.cancel = cancel;
+		bcr.done = done;
+		bcr.remove = remove;
+		
+		function cancel() {
+			$state.go('main.listBook');
+		}
+		
+		function done() {
+			bcr.submitted = true;
+			if(bcr.form.$invalid) {
+				return;
+			}
+			
+			bcr.book.$saveOrUpdate(cancel);
+		}
+		
+		function remove() {
+			bcr.book.$delete({id: bcr.book.id}, successRemoveModal);
+		}
+		
+		function successRemoveModal() {
+			alert('Category with id: '+ bcr.book.id + ' has been successfully removed.');
+			$state.go('main.listBook');
+		}
+		
+	}
+})();

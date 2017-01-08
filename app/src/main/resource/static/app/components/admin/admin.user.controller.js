@@ -40,6 +40,13 @@
 				return;
 			}
 			
+			if(auc.user.image != null && auc.user.image != undefined && auc.user.image != '') {
+				if(auc.user.image.indexOf('image') == -1) {
+					auc.notAnImage = true;
+	            	return;
+	            }
+			}
+			
 			auc.user.type = auc.user.type.name.toLowerCase();
 			if(auc.user.image == null || auc.user.image == undefined || auc.user.image == '') {
 				auc.user.image = 'https://diasp.eu/assets/user/default.png';

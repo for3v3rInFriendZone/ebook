@@ -19,6 +19,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="page-scroll"><a ng-click="ccr.goToSection('portfolio')">Portfolio</a></li>
 				<li class="page-scroll"><a ng-click="ccr.goToSection('about')">About</a></li>
+				<li ng-class="{active: nbc.isActive('main.listBook') || nbc.isActive('main.editBook') || nbc.isActive('main.newBook')}" class="page-scroll" ng-show="nbc.user.type == 'admin' || nbc.user.type == 'subscriber' "><a ui-sref="main.listBook">Books</a></li>
 				<li ng-class="{active: nbc.isActive('main.listCategory') || nbc.isActive('main.editCategory') || nbc.isActive('main.newCategory')}" class="page-scroll" ng-show="nbc.user.type == 'admin' || nbc.user.type == 'subscriber' "><a ui-sref="main.listCategory">Categories</a></li>
 				<li class="page-scroll" ng-show="!nbc.user"> <a ui-sref="login"> <i class="fa fa-sign-in" style="font-size: 16px;"> </i> Sign in </a> </li>
 				<li ng-class="{active: nbc.isActive('main.adminUsers') || nbc.isActive('main.usersEdit') || nbc.isActive('main.newUser')}" ng-show="nbc.user.type == 'admin'"> <a ng-click="nbc.goToAdminUsers()">Users</a></li>

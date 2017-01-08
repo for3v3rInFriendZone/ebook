@@ -44,11 +44,29 @@
 					controllerAs: "aluc"
 				}
 			}
+		})
+		.state("main.listBook", {
+			url: '/books',
+			views:{
+				'main@': {
+					resolve: {
+						books: getBooks	
+					},
+					templateUrl: "app/components/book/book.list.html",
+					controller: "BookListController",
+					controllerAs: "blc"
+				}
+			}
 		});
 		
 		getUsers.$inject = ['User'];
 		function getUsers(User) {
 			return User.query().$promise;
+		}
+		
+		getBooks.$inject = ['Book'];
+		function getBooks(Book) {
+			return Book.query().$promise;
 		}
 	}
 })();

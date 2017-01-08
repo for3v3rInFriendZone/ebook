@@ -8,7 +8,6 @@
 
 	config.$inject = ['$urlRouterProvider', '$stateProvider'];
 	function config($urlRouterProvider, $stateProvider){
-		$urlRouterProvider.otherwise("/home");
 
 		$stateProvider
 		.state("main.listCategory", {
