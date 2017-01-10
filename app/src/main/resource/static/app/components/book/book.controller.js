@@ -5,8 +5,8 @@
 		.module('ebook-book')
 		.controller('BookController', BookController);
 
-	BookController.$inject = ['localStorageService', '$state', 'book', 'title', 'users', 'categories', 'languages'];
-	function BookController(localStorageService, $state, book, title, users, categories, languages) {
+	BookController.$inject = ['$scope', 'localStorageService', '$state', 'book', 'title', 'users', 'categories', 'languages', 'BookPdf'];
+	function BookController($scope, localStorageService, $state, book, title, users, categories, languages, BookPdf) {
 		
 		var bcr = this;	
 		
@@ -38,9 +38,13 @@
 		}
 		
 		function successRemoveModal() {
-			alert('Category with id: '+ bcr.book.id + ' has been successfully removed.');
+			alert('Book with id: '+ bcr.book.id + ' has been successfully removed.');
 			$state.go('main.listBook');
 		}
+		
+		/*$scope.uploadImage = function () {
+			bcr.book.$remove();
+	    }*/
 		
 	}
 })();

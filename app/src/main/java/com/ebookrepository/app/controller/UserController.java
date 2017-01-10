@@ -67,7 +67,11 @@ public class UserController {
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<User> saveUser(@RequestBody User user) throws IOException {
-		
+		/*
+		byte[] decodedImg = Base64.getDecoder().decode(user.getImage().split(",")[1].getBytes(StandardCharsets.UTF_8));
+		Path destinationFile = Paths.get("/home/martel/git/ebook/app/src/main/resource/booksPdf", "myImage.jpg");
+		Files.write(destinationFile, decodedImg);
+		*/		
 		User newUser = userRepo.save(user);
 		return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
 	}

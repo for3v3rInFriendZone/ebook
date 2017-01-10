@@ -12,11 +12,24 @@
 		            <div class="panel-body">
 		              <div class="row">
 		              	<form class="state-form form-horizontal text-center" name="bcr.form" novalidate>
-			                <div class="form-group">
+		              		<div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-3"> 				           
 				                  <img class="img-responsive img-circle col-sm-offset-3" alt="User Pic" src="https://www.govloop.com/wp-content/uploads/group-avatars/417/9b48c14d632e79bf6534570bbbf1fae5-bpfull.jpg"  width="150px" height="150px"/>
-				                  <br/>
-				                  <hr/>
+			              		  <br/>
+					              <hr/>
+						    	</div>
+				            </div>	              		
+		              		<div class="form-group" ng-if="bcr.currentState != 'main.editBook'">
+				                <div class="col-sm-8 col-sm-offset-3">
+				                	<label for="author" class="col-sm-1 control-label" >Upload book:</label>
+				                	 <div class="col-sm-8 col-sm-offset-1">
+				                	 	<input class="btn btn-info" type="file" fileread="bcr.book"/>	
+				                	 	<p class="text-center" ng-show="bcr.notAPdf" style="color: red; font-size: 14px;">You did not upload a pdf file.</p>
+				                	 </div> 			                  		    
+						    	</div>
+						    </div>
+			                <div class="form-group">
+				                <div class="col-sm-8 col-sm-offset-3"> 				           
 				                  <label for="title" class="col-sm-1 control-label" >Title:</label>
 				                  <div class="col-sm-8">
 						    			<div ng-class="{'has-error': bcr.form.title.$error.required && bcr.submitted}">
@@ -50,7 +63,7 @@
 						    	  </div>
 						    	</div>
 				              </div>
-				              <div class="form-group">
+				              <!--  <div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-3"> 				           
 				                  <label for="filename" class="col-sm-1 control-label" >Filename:</label>
 				                  <div class="col-sm-8">
@@ -60,7 +73,7 @@
 						    			<p class="text-center" ng-show="bcr.form.filename.$error.required && bcr.submitted" style="color: red; font-size: 14px;">Filename is required.</p>					    			
 						    	  </div>
 						    	</div>
-				              </div>
+				              </div>-->
 				              <div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-3"> 			                  
 				                  <label for="chooseCategory" class="col-sm-1 control-label" >Category:</label>
@@ -95,7 +108,7 @@
                         <div class="text-center">                          
                             <button type="button" ng-click="bcr.cancel()" class="btn btn-sm btn-info data-toggle="tooltip" data-placement="bottom" title="Cancel"><i class="fa fa-arrow-left"></i></button>                      
                             <button type="button" ng-click="bcr.done()" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Save category"><i class="fa fa-check"></i></button>                    
-                            <button ng-show="bcr.currentState == 'main.editCategory'" type="button" ng-click="bcr.remove()" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Remove category"><i class="fa fa-trash-o"></i></button>
+                            <button ng-show="bcr.currentState == 'main.editBook'" type="button" ng-click="bcr.remove()" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Remove category"><i class="fa fa-trash-o"></i></button>
                         </div>
                     </div>
 		        </div>

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: app
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Marko
+Built-By: martel
 Implementation-Vendor-Id: com.ebookrepository
 Build-Jdk: 1.8.0_111
 Implementation-URL: http://maven.apache.org
