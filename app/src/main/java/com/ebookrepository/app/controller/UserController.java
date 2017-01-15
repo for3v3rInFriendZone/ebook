@@ -1,19 +1,9 @@
 package com.ebookrepository.app.controller;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Base64;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.ebookrepository.app.model.User;
-import com.ebookrepository.app.repository.UserRepository;
+import com.ebookrepository.app.service.UserService;
 
 
 @RestController
@@ -29,39 +19,39 @@ import com.ebookrepository.app.repository.UserRepository;
 public class UserController {
 
 	@Autowired
-	UserRepository userRepo;
+	UserService userSer;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getUsers() {
 
-		List<User> users = (List<User>) userRepo.findAll();
+		List<User> users = (List<User>) userSer.findAll();
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getUser(@PathVariable Long id) {
 
-		User user = userRepo.findOne(id);
+		User user = userSer.findOne(id);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<User> editUser(@PathVariable("id") Long id, @RequestBody User user) {
 
-		User editedUser = userRepo.findOne(id);
+		User editedUser = userSer.findOne(id);
 		editedUser.setFirstname(user.getFirstname());
 		editedUser.setLastname(user.getLastname());
 		editedUser.setPassword(user.getPassword());
 		editedUser.setImage(user.getImage());
 		
-		userRepo.save(editedUser);
+		userSer.save(editedUser);
 		return new ResponseEntity<User>(editedUser, HttpStatus.OK);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
 	public ResponseEntity<User> deleteUser(@PathVariable("id") Long id) {
 
-		userRepo.delete(id);
+		userSer.delete(id);
 		return new ResponseEntity<User>(HttpStatus.OK);
 	}
 	
@@ -72,7 +62,7 @@ public class UserController {
 		Path destinationFile = Paths.get("/home/martel/git/ebook/app/src/main/resource/booksPdf", "myImage.jpg");
 		Files.write(destinationFile, decodedImg);
 		*/		
-		User newUser = userRepo.save(user);
+		User newUser = userSer.save(user);
 		return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
 	}
 }
