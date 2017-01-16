@@ -1,2 +1,4 @@
 js
 /target/
+/src/main/resource/lucene
+/src/main/resource/booksPdf
