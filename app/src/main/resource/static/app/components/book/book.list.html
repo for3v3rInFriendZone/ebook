@@ -3,7 +3,7 @@
 <section style="background-color: gray;">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+			<div class="col-sm-10 col-sm-offset-1 toppad">
 				<br/><br/><br/><br/>
 				<div class="panel panel-info">
 		            <div class="panel-heading text-center">
@@ -11,9 +11,9 @@
 		            </div>
 		            <div class="panel-body">
 		              <div class="row">	  
-		                <div class="col-md-7 col-md-offset-2"> 
+		                <div class="col-md-6 col-md-offset-3"> 
 		                  <table class="table table-hover table-user-information">
-		                  	<thead>
+		                  	<!--  <thead>
 		                  		<th>Title</th>
 		                  		<th>Author</th>
 		                  		<th>Keywords</th>
@@ -32,6 +32,15 @@
 		                        <td ng-click="blc.editBook(book.id)"> {{book.language.name}} </td>  
 		                        <td ng-click="blc.editBook(book.id)"> {{book.user.firstname}} &nbsp {{book.user.lastname}} </td>                    
 		                      </tr>                    
+		                    </tbody>
+		                    -->
+		                    <tbody>
+		                    	<tr ng-repeat="book in blc.books | orderBy: 'id'">
+		                    		<td ng-click="blc.editBook(book.id)">
+		                    			<img class="img-responsive col-sm-offset-5" alt="User Pic" src="{{book.image}}"  width="110" height="190"/>
+		                    			<a ng-click="blc.editBook(book.id)">{{book.title}}</a> &nbsp by &nbsp <i> {{book.author}} </i> 
+		                    		</td>
+		                    	</tr>
 		                    </tbody>
 		                  </table>
 		                </div>

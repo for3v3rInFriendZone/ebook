@@ -15,59 +15,63 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "EBOOK")
-public class Ebook implements Serializable{
+public class Ebook implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	@Column(name = "TITLE")
 	private String title;
-	
+
 	@Column(name = "AUTHOR")
 	private String author;
-	
+
 	@Column(name = "KEYWORDS")
 	private String keywords;
-	
+
 	@Column(name = "PUBLICATION_YEAR")
 	private Integer publication_year;
-	
+
+	@Column(name = "PROFILE_IMAGE", length = 10485760)
+	private String image;
+
 	@NotNull
 	@Column(name = "FILENAME")
 	private String filename;
-	
+
 	@Column(name = "MIME")
 	private String mime;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CATEGORY", nullable = false)
 	private Category category;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "LANGUAGE", nullable = false)
 	private Language language;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EBOOKUSER", nullable = false)
 	private User user;
-	
+
 	public Ebook() {
-		
+
 	}
 
-	public Ebook(String title, String author, String keywords, Integer publication_year, String filename,
+	public Ebook(String title, String author, String keywords, String image, Integer publication_year, String filename,
 			String mime) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.keywords = keywords;
+		this.image = image;
 		this.publication_year = publication_year;
 		this.filename = filename;
 		this.mime = mime;
@@ -148,5 +152,13 @@ public class Ebook implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 }

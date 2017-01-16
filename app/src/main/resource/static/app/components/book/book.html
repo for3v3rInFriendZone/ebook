@@ -14,7 +14,7 @@
 		              	<form class="state-form form-horizontal text-center" name="bcr.form" novalidate>
 		              		<div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-3"> 				           
-				                  <img class="img-responsive img-circle col-sm-offset-3" alt="User Pic" src="https://www.govloop.com/wp-content/uploads/group-avatars/417/9b48c14d632e79bf6534570bbbf1fae5-bpfull.jpg"  width="150px" height="150px"/>
+				                  <img class="img-responsive col-sm-offset-3" alt="User Pic" src={{bcr.book.image}}  width="150px" height="150px"/>
 			              		  <br/>
 					              <hr/>
 						    	</div>
@@ -74,6 +74,14 @@
 						    	  </div>
 						    	</div>
 				              </div>-->
+				              <div class="form-group">
+				                <div class="col-sm-8 col-sm-offset-3"> 				           
+				                  <label for="image" class="col-sm-1 control-label" >Image:</label>
+				                  <div class="col-sm-8">
+						    			 <input class="col-sm-offset-1 form-control btn btn-info" type="file" imageread="bcr.book.image" id="image" name="image"/>				    			
+						    	  </div>
+						    	</div>
+				              </div>
 				              <div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-3"> 			                  
 				                  <label for="chooseCategory" class="col-sm-1 control-label" >Category:</label>

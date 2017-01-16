@@ -27,6 +27,23 @@
 				}
 			}
 		})
+		.state("main.userBook", {
+			url: '/book-preview/:id',
+			views:{
+				'main@': {
+					resolve: {
+						book: editBook,
+						title: editTitle,
+						users: getUsers,
+						categories: getCategories,
+						languages: getLanguages
+					},
+					templateUrl: "app/components/book/bookUser.html",
+					controller: "BookController",
+					controllerAs: "bcr"
+				}
+			}
+		})
 		.state("main.newBook", {
 			url: '/books/new',
 			views:{
