@@ -91,6 +91,7 @@ public class EbookController {
 		editedBook.setPublication_year(ebook.getPublication_year());
 		editedBook.setFilename(ebook.getFilename());
 		editedBook.setMime(ebook.getMime());
+		editedBook.setImage(ebook.getImage());
 		editedBook.setCategory(ebook.getCategory());
 		editedBook.setLanguage(ebook.getLanguage());
 		editedBook.setUser(ebook.getUser());

@@ -13,6 +13,7 @@
 		blc.books = books;
 		blc.newBook = newBook;
 		blc.editBook = editBook;
+		blc.searchBook = searchBook;
 		
 		/**
 		 * If user is subscriber and have a defined category, he can be shown only books from his category
@@ -44,8 +45,10 @@
 			} else {
 				$state.go('main.userBook', {id: id});
 			}
-			
-			
+		}
+		
+		function searchBook() {
+			$state.go('main.searchBook');
 		}
 		
 	}

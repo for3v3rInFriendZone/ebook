@@ -1,17 +1,21 @@
 package com.ebookrepository.app.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "CATEGORY")
-public class Category implements Serializable{
+public class Category implements Serializable {
 
 	/**
 	 * 
@@ -21,13 +25,13 @@ public class Category implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	@Column(name = "NAME")
 	private String name;
-	
+
 	public Category() {
-		
+
 	}
 
 	public Category(String name) {
@@ -46,4 +50,5 @@ public class Category implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+
 }

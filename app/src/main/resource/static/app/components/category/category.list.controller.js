@@ -21,6 +21,8 @@
 		function editCategory(id) {
 			if(clc.user.type == 'admin') {
 				$state.go('main.editCategory', {id: id});
+			} else if(clc.user.type == 'subscriber') {
+				$state.go('main.categoryBooks', {id: id});
 			}
 			
 		}

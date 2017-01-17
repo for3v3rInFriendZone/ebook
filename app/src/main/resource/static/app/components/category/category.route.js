@@ -29,7 +29,8 @@
 				'main@': {
 					resolve: {
 						category: editCategory,
-						title: editTitle
+						title: editTitle,
+						books: getBooks
 					},
 					templateUrl: "app/components/category/category.html",
 					controller: "CategoryController",
@@ -43,14 +44,35 @@
 				'main@': {
 					resolve: {
 						category: newCategory,
-						title: newTitle
+						title: newTitle,
+						books: getBooks
 					},
 					templateUrl: "app/components/category/category.html",
 					controller: "CategoryController",
 					controllerAs: "ccr"
 				}
 			}
+		})
+		.state("main.categoryBooks", {
+			url: '/categorie/:id/books',
+			views:{
+				'main@': {
+					resolve: {
+						category: editCategory,
+						title: categoryBooksTitle,
+						books: getBooks
+					},
+					templateUrl: "app/components/category/category.listOfBooks.html",
+					controller: "CategoryController",
+					controllerAs: "ccr"
+				}
+			}
 		});
+		
+		getBooks.$inject = ['Book'];
+		function getBooks(Book) {
+			return Book.query().$promise;
+		}
 		
 		getCategories.$inject = ['Category'];
 		function getCategories(Category) {
@@ -69,6 +91,10 @@
 		
 		function newTitle() {
 			return "New category";
+		}
+		
+		function categoryBooksTitle() {
+			return "Books from selected category";
 		}
 		
 		editTitle.$inject = ['$stateParams'];

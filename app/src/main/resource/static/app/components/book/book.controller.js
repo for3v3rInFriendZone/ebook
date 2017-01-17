@@ -41,10 +41,5 @@
 			alert('Book with id: '+ bcr.book.id + ' has been successfully removed.');
 			$state.go('main.listBook');
 		}
-		
-		/*$scope.uploadImage = function () {
-			bcr.book.$remove();
-	    }*/
-		
 	}
 })();

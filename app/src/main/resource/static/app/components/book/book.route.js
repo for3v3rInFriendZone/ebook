@@ -44,6 +44,21 @@
 				}
 			}
 		})
+		.state("main.searchBook", {
+			url: '/books/search',
+			views:{
+				'main@': {
+					resolve: {
+						books: getBooks,
+						categories: getCategories,
+						languages: getLanguages
+					},
+					templateUrl: "app/components/book/book.search.html",
+					controller: "BookSearchController",
+					controllerAs: "bsc"
+				}
+			}
+		})
 		.state("main.newBook", {
 			url: '/books/new',
 			views:{
@@ -84,6 +99,11 @@
 		getUsers.$inject = ['User'];
 		function getUsers(User) {
 			return User.query().$promise;
+		}
+		
+		getBooks.$inject = ['Book'];
+		function getBooks(Book) {
+			return Book.query().$promise;
 		}
 		
 		getCategories.$inject = ['Category'];
