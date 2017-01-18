@@ -5,14 +5,14 @@
 		.module('ebook-category')
 		.controller('CategoryController', CategoryController);
 
-	CategoryController.$inject = ['localStorageService', '$state', 'category', 'title', 'books'];
-	function CategoryController(localStorageService, $state, category, title, books) {
+	CategoryController.$inject = ['localStorageService', '$state', 'category', 'title', 'books', '$stateParams'];
+	function CategoryController(localStorageService, $state, category, title, books, $stateParams) {
 		
 		var ccr = this;	
 		
 		ccr.category = category;
 		ccr.books = [];
-		ccr.title = title;
+		ccr.title = title
 		ccr.currentState = $state.current.name;
 		ccr.cancel = cancel;
 		ccr.done = done;
@@ -27,6 +27,13 @@
 			if(books[i].category.id === ccr.category.id) {
 				ccr.books.push(books[i]);
 			}
+		}
+		
+		/**
+		 * Title for a selected category and there books
+		 */
+		if(ccr.currentState == 'main.categoryBooks') {
+			ccr.title = "Books from " + ccr.category.name + " category";
 		}
 		
 		function cancel() {
@@ -56,8 +63,8 @@
 			$state.go('main.listCategory');
 		}
 		
-		function bookUser(id){
-			$state.go('main.userBook', {id: id});
+		function bookUser(bookId){
+			$state.go('main.bookPreviewCategory', {id: $stateParams.id, id2: bookId});
 		}
 		
 	}

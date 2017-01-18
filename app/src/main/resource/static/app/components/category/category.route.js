@@ -67,6 +67,19 @@
 					controllerAs: "ccr"
 				}
 			}
+		})
+		.state("main.bookPreviewCategory", {
+			url: '/categorie/:id/book/:id2',
+			views:{
+				'main@': {
+					resolve: {
+						book: showBook
+					},
+					templateUrl: "app/components/category/category.bookUser.html",
+					controller: "CategoryListBookController",
+					controllerAs: "clbc"
+				}
+			}
 		});
 		
 		getBooks.$inject = ['Book'];
@@ -93,13 +106,20 @@
 			return "New category";
 		}
 		
+		
 		function categoryBooksTitle() {
-			return "Books from selected category";
+			return "";
+			
 		}
 		
 		editTitle.$inject = ['$stateParams'];
 		function editTitle($stateParams) {
 			return "Edit category with id " + $stateParams.id;
+		}
+		
+		showBook.$inject = ['$stateParams', 'Book'];
+		function showBook($stateParams, Book) {
+			return Book.get({id: $stateParams.id2}).$promise;
 		}
 	}
 })();

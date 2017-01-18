@@ -3,13 +3,21 @@
 
 	angular
 		.module('ebook-category')
-		.controller('CategoryBooksController', CategoryBooksController);
+		.controller('CategoryListBookController', CategoryListBookController);
 
-	CategoryBooksController.$inject = ['localStorageService', '$state', 'categories'];
-	function CategoryBooksController(localStorageService, $state, categories) {
+	CategoryListBookController.$inject = ['localStorageService', '$state', 'book', '$stateParams'];
+	function CategoryListBookController(localStorageService, $state, book, $stateParams) {
 		
-		var cbc = this;	
-		cbc.user = localStorageService.get('user');
+		var clbc = this;	
+		clbc.user = localStorageService.get('user');
+		clbc.book = book;
+		clbc.cancel = cancel;
+		
+		function cancel() {
+			$state.go('main.categoryBooks', {id: $stateParams.id});;
+		}
+		
+		
 		
 		
 	}
