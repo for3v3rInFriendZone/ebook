@@ -17,7 +17,7 @@
 				                <div class="col-sm-8 col-sm-offset-3"> 				           
 				                  <label for="title" class="col-sm-1 control-label" >By title: </label>
 				                  <div class="col-sm-8">
-						    			<input class="col-sm-offset-1 form-control" type="text" ng-model="bsc.search.title" id="title" name="title" />					    			
+						    			<input class="col-sm-offset-1 form-control" type="text" ng-model="bsc.book.title" id="title" name="title" />					    			
 						    	  </div>
 						    	</div>
 				              </div>
@@ -25,7 +25,7 @@
 				                <div class="col-sm-8 col-sm-offset-3"> 				           
 				                  <label for="author" class="col-sm-1 control-label" >By author:</label>
 				                  <div class="col-sm-8">
-						    			<input class="col-sm-offset-1 form-control" type="text" ng-model="bsc.search.author" id="author" name="author"/>					    			
+						    			<input class="col-sm-offset-1 form-control" type="text" ng-model="bsc.book.author" id="author" name="author"/>					    			
 						    	  </div>
 						    	</div>
 				              </div>
@@ -33,7 +33,7 @@
 				                <div class="col-sm-8 col-sm-offset-3"> 				           
 				                  <label for="keywords" class="col-sm-1 control-label" >By keywords:</label>
 				                  <div class="col-sm-8">
-						    			<input class="col-sm-offset-1 form-control" type="text" ng-model="bsc.search.keywords" id="keywords" name="keywords"/>					    			
+						    			<input class="col-sm-offset-1 form-control" type="text" ng-model="bsc.book.keywords" id="keywords" name="keywords"/>					    			
 						    	  </div>
 						    	</div>
 				              </div>
@@ -41,7 +41,7 @@
 				                <div class="col-sm-8 col-sm-offset-3"> 				           
 				                  <label for="content" class="col-sm-1 control-label" >By content:</label>
 				                  <div class="col-sm-8">
-						    			<textarea  style="resize: none; height: 105px;" class="col-sm-offset-1 form-control" type="text" ng-model="bsc.search.content" id="content" name="content">  </textarea>				    			
+						    			<textarea  style="resize: none; height: 105px;" class="col-sm-offset-1 form-control" type="text" ng-model="bsc.book.content" id="content" name="content">  </textarea>				    			
 						    	  </div>
 						    	</div>
 				              </div>
@@ -49,11 +49,13 @@
 				                <div class="col-sm-8 col-sm-offset-3"> 				           
 				                  <label for="language" class="col-sm-1 control-label" >By language:</label>
 				                  <div class="col-sm-8">
-						    			<input class="col-sm-offset-1 form-control" type="text" ng-model="bsc.search.language" id="language" name="language" required/>						    			
+						    			<input class="col-sm-offset-1 form-control" type="text" ng-model="bsc.book.language" id="language" name="language" required/>						    			
 						    	  </div>
 						    	</div>
 				              </div>			             			                
 		                </form>
+		                
+		                <p ng-if="bsc.searchResults.length != 0"> {{bsc.searchResults}} </p>
 		              </div>		           
            			</div>
            			<div class="panel-footer">

@@ -6,11 +6,15 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexableField;
+import org.apache.lucene.index.Term;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ebookrepository.app.luceneUtil.StandardSearcher;
 import com.ebookrepository.app.luceneUtil.UDDIndexer;
 import com.ebookrepository.app.model.Ebook;
 import com.ebookrepository.app.service.EbookService;
@@ -45,12 +51,44 @@ public class EbookController {
 		return new ResponseEntity<Ebook>(ebook, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/search/{query}", method = RequestMethod.GET)
+	public ResponseEntity<List<Ebook>> searchBook(@PathVariable String query) {
+
+		List<Ebook> listOfBooks = (List<Ebook>) bookSer.findAll();
+		List<Ebook> returnList = new ArrayList<Ebook>();
+		StandardSearcher standardSearcher = new StandardSearcher();
+		
+		Term searchTerm = new Term("title", query);
+		
+		List<Document> standardDocs = standardSearcher.search(searchTerm);
+		
+		if(standardDocs.size() == 0) {
+			System.out.println("No document found.");
+		}
+		for(Document doc : standardDocs){
+			for(IndexableField field : doc.getFields()){
+				if(field.name().equals("title")) {
+					for(Ebook book : listOfBooks) {
+						if(book.getTitle().equals(field.stringValue())) {
+							returnList.add(book);
+						}
+					}
+				}
+				//System.out.println(field.name() + ": " + field.stringValue());
+			}
+		}
+		
+		return new ResponseEntity<List<Ebook>>(returnList, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value="/pdf", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<Ebook> getInfoFromPdf(@RequestBody Ebook ebook) throws IOException {
 
 		byte[] decodedPdf = Base64.getDecoder().decode(ebook.getFilename().split(",")[1].getBytes(StandardCharsets.UTF_8));
-		Path destinationFile = Paths.get("C:\\Users\\Marko\\git\\ebook\\app\\src\\main\\resource\\booksPdf", "book.pdf");
+		Path destinationFile = Paths.get("C:\\Users\\Marko\\git\\ebook\\app\\src\\main\\resource\\booksPdf", ebook.getMime());
 		Files.write(destinationFile, decodedPdf);
+		
+	//	FileUtils f;
 		
 		File docsDir = new File(ResourceBundle.getBundle("index").getString("docs"));
 		UDDIndexer indexer = new UDDIndexer(true);
@@ -68,15 +106,16 @@ public class EbookController {
 				} else if(field.name().equals("keyword")) {
 					keywords = keywords + " " + field.stringValue();
 				} else if(field.name().equals("fileName")) {
-					byte[] decodedPdf2 = Base64.getDecoder().decode(ebook.getFilename().split(",")[1].getBytes(StandardCharsets.UTF_8));
+					/*byte[] decodedPdf2 = Base64.getDecoder().decode(ebook.getFilename().split(",")[1].getBytes(StandardCharsets.UTF_8));
 					Path destinationFile2 = Paths.get("C:\\Users\\Marko\\git\\ebook\\app\\src\\main\\resource\\booksPdf", field.stringValue());
-					Files.write(destinationFile2, decodedPdf2);
-					ebook.setFilename(field.stringValue());
+					Files.write(destinationFile2, decodedPdf2);*/
+					ebook.setFilename(ebook.getMime());
 				}
 				
 			}
 		}
 		ebook.setKeywords(keywords);
+		ebook.setMime("application/pdf");
 		
 		return new ResponseEntity<Ebook>(ebook, HttpStatus.OK);
 	}
