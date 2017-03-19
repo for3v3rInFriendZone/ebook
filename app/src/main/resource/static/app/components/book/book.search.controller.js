@@ -22,8 +22,8 @@
 		}
 		
 		function search() {
-			var term = bsc.book.title;
-			var ssss = BookPdfSearch.search({query: term}, function(results){
+			//bsc.term = bsc.book.title + " " + bsc.book.author + " " + bsc.book.keywords + " " + bsc.book.content + " " + bsc.book.language;
+			BookPdfSearch.search(bsc.book, function(results){
 				bsc.searchResults = results;
 			});
 		}

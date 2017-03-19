@@ -8,13 +8,10 @@
 	BookPdfSearch.$inject = ['$resource'];
 	function BookPdfSearch($resource) {
 
-		var bookPdfSearchService = $resource('/book/search/:query',
+		var bookPdfSearchService = $resource('/book/search/:id',
 				{id: "@_id"},
-				{search: {method: 'GET', 
-					      isArray:true,
-					      params: {
-					    	  query: '@query'
-					      			}}});
+				{search: {method: 'POST', 
+					      isArray:true}});
 	
 		
 		return bookPdfSearchService;

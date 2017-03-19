@@ -56,6 +56,11 @@
 		                </form>
 		                
 		                <p ng-if="bsc.searchResults.length != 0"> {{bsc.searchResults}} </p>
+		                <div ng-if="bsc.searchResults.length == 0">
+		                  	<img class="img-responsive col-sm-offset-5" alt="User Pic" src="https://cdn4.iconfinder.com/data/icons/emoticons-outline/512/21-512.png"  width="110" height="190"/>
+		                  	<br/>
+		                    <p class="text-center" style="color: blue;"> Soory, no books matches your search.</p>
+		                </div>
 		              </div>		           
            			</div>
            			<div class="panel-footer">

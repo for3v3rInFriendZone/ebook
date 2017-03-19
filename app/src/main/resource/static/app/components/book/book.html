@@ -14,7 +14,8 @@
 		              	<form class="state-form form-horizontal text-center" name="bcr.form" novalidate>
 		              		<div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-3"> 				           
-				                  <img class="img-responsive col-sm-offset-3" alt="User Pic" src={{bcr.book.image}}  width="150px" height="150px"/>
+				                  <img ng-show="bcr.book.image" class="img-responsive col-sm-offset-3" alt="User Pic" src={{bcr.book.image}}  width="150px" height="150px"/>
+				                  <img ng-show="!bcr.book.image" class="img-responsive img-circle col-sm-offset-3" alt="User Pic" src="http://psicoterapeutas.eu/imagenes-psicoterapeutas-eu/Photoxpress_4839887.jpg"  width="150px" height="150px"/>
 			              		  <br/>
 					              <hr/>
 						    	</div>

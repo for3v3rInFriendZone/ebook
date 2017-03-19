@@ -29,6 +29,9 @@
 			if(bcr.form.$invalid) {
 				return;
 			}
+			if(bcr.book.image == null || bcr.book.image == undefined || bcr.book.image == '') {
+				bcr.book.image = 'http://psicoterapeutas.eu/imagenes-psicoterapeutas-eu/Photoxpress_4839887.jpg';
+			}
 			
 			bcr.book.$saveOrUpdate(cancel);
 		}

@@ -51,16 +51,21 @@ public class EbookController {
 		return new ResponseEntity<Ebook>(ebook, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/search/{query}", method = RequestMethod.GET)
-	public ResponseEntity<List<Ebook>> searchBook(@PathVariable String query) {
+	@RequestMapping(value = "/search", method = RequestMethod.POST, consumes = "application/json")
+	public ResponseEntity<List<Ebook>> searchBook(@RequestBody Ebook ebook) {
 
 		List<Ebook> listOfBooks = (List<Ebook>) bookSer.findAll();
 		List<Ebook> returnList = new ArrayList<Ebook>();
+		
 		StandardSearcher standardSearcher = new StandardSearcher();
+		Term searchByTitle = null;
+		if(ebook.getTitle() != "") {
+			searchByTitle = new Term("title", ebook.getTitle());
+		}
 		
-		Term searchTerm = new Term("title", query);
+		//Term searchTerm = new Term("title", ebook.getTitle());
 		
-		List<Document> standardDocs = standardSearcher.search(searchTerm);
+		List<Document> standardDocs = standardSearcher.search(searchByTitle);
 		
 		if(standardDocs.size() == 0) {
 			System.out.println("No document found.");
