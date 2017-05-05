@@ -9,6 +9,8 @@ INSERT INTO category (name) VALUES ('Children');
 INSERT INTO category (name) VALUES ('Classic');
 INSERT INTO category (name) VALUES ('Poetry');
 INSERT INTO category (name) VALUES ('Horror');
+INSERT INTO category (name) VALUES ('History');
+INSERT INTO category (name) VALUES ('Science');
 
 INSERT INTO language (name) VALUES ('English');
 INSERT INTO language (name) VALUES ('German');

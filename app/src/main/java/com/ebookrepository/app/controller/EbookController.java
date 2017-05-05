@@ -151,7 +151,7 @@ public class EbookController {
 		return new ResponseEntity<Ebook>(newBook, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Ebook> deleteBook(@PathVariable("id") Long id) {
 
 		bookSer.delete(id);
