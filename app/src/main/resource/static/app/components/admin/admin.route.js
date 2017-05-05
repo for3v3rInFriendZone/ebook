@@ -29,7 +29,6 @@
 			views:{
 				'main@': {
 					resolve: {
-						selectedUser: getNewUser,
 						categories: getCategories,
 						listOfUsers: getUsers		
 					},
@@ -42,12 +41,7 @@
 		
 		getUserToEdit.$inject = ['User', '$stateParams'];
 		function getUserToEdit(User, $stateParams) {
-			return User.get({id: $stateParams.id}).$promise;
-		}
-		
-		getNewUser.$inject = ['User'];
-		function getNewUser(User) {
-			return new User();
+			return User.findOne($stateParams.id);
 		}
 		
 		getCategories.$inject = ['Category'];
@@ -57,7 +51,7 @@
 		
 		getUsers.$inject = ['User'];
 		function getUsers(User) {
-			return User.query().$promise;
+			return User.findAll();
 		}
 	}
 })();
