@@ -71,7 +71,7 @@
 		
 		getCategories.$inject = ['Category'];
 		function getCategories(Category) {
-			return Category.query().$promise;
+			return Category.findAll();
 		}
 	}
 })();

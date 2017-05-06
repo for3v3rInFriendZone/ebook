@@ -44,7 +44,7 @@
 				'main@': {
 					resolve: {
 						category: newCategory,
-						title: newTitle,
+						title: newTitle, 
 						books: getBooks
 					},
 					templateUrl: "app/components/category/category.html",
@@ -89,17 +89,16 @@
 		
 		getCategories.$inject = ['Category'];
 		function getCategories(Category) {
-			return Category.query().$promise;
+			return Category.findAll();
 		}
 		
-		newCategory.$inject = ['Category'];
-		function newCategory(Category) {
-			return new Category();
+		function newCategory() {
+			return {};
 		}
 		
 		editCategory.$inject = ['$stateParams', 'Category'];
 		function editCategory($stateParams, Category) {
-			return Category.get({id: $stateParams.id}).$promise;
+			return Category.findOne($stateParams.id);
 		}
 		
 		function newTitle() {

@@ -10,7 +10,7 @@
 
 		return {
 			save: function(user, callback) {
-				Restangular.all('user').post(user).then(function(data) {
+				return Restangular.all('user').post(user).then(function(data) {
 					callback();
 				});
 			},
