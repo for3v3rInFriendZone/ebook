@@ -5,8 +5,8 @@
 		.module('ebook-user')
 		.factory('User', User);
 
-	User.$inject = ['Restangular', '$state'];
-	function User(Restangular, $state) {
+	User.$inject = ['Restangular'];
+	function User(Restangular) {
 
 		return {
 			save: function(user, callback) {

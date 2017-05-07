@@ -66,7 +66,7 @@
 		
 		getBooks.$inject = ['Book'];
 		function getBooks(Book) {
-			return Book.query().$promise;
+			return Book.findAll();
 		}
 	}
 })();

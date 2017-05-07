@@ -84,7 +84,7 @@
 		
 		getBooks.$inject = ['Book'];
 		function getBooks(Book) {
-			return Book.query().$promise;
+			return Book.findAll();
 		}
 		
 		getCategories.$inject = ['Category'];
@@ -118,7 +118,7 @@
 		
 		showBook.$inject = ['$stateParams', 'Book'];
 		function showBook($stateParams, Book) {
-			return Book.get({id: $stateParams.id2}).$promise;
+			return Book.findOne($stateParams.id2);
 		}
 	}
 })();

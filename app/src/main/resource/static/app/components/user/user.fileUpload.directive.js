@@ -19,7 +19,7 @@
 	                    scope.$apply(function () {
 	                        scope.fileread = loadEvent.target.result;
 	                        var bookPdf = new BookPdf();
-	                        var ebook = new Book();
+	                        var ebook = {};
 	                        bookPdf.filename = scope.fileread;
 	                        bookPdf.mime = scope.nameFromFile;
 	                        bookPdf.$setPdf(function(info) {

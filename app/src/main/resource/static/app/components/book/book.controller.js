@@ -5,8 +5,8 @@
 		.module('ebook-book')
 		.controller('BookController', BookController);
 
-	BookController.$inject = ['$scope', 'localStorageService', '$state', 'book', 'title', 'users', 'categories', 'languages', 'BookPdf'];
-	function BookController($scope, localStorageService, $state, book, title, users, categories, languages, BookPdf) {
+	BookController.$inject = ['$scope', 'localStorageService', '$state', 'book', 'title', 'users', 'categories', 'languages', 'BookPdf', 'Book'];
+	function BookController($scope, localStorageService, $state, book, title, users, categories, languages, BookPdf, Book) {
 		
 		var bcr = this;	
 		
@@ -33,11 +33,11 @@
 				bcr.book.image = 'http://psicoterapeutas.eu/imagenes-psicoterapeutas-eu/Photoxpress_4839887.jpg';
 			}
 			
-			bcr.book.$saveOrUpdate(cancel);
+			Book.save(bcr.book, cancel);
 		}
 		
 		function remove() {
-			bcr.book.$delete({id: bcr.book.id}, successRemoveModal);
+			Book.remove(bcr.book.id, successRemoveModal);
 		}
 		
 		function successRemoveModal() {

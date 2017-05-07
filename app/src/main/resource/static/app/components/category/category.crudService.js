@@ -5,8 +5,8 @@
 		.module('ebook-category')
 		.factory('Category', Category);
 
-	Category.$inject = ['Restangular', '$state'];
-	function Category(Restangular, $state) {
+	Category.$inject = ['Restangular'];
+	function Category(Restangular) {
 		
 		return {
 			save: function(category, callback) {
