@@ -23,6 +23,7 @@
 	                        bookPdf.filename = scope.fileread;
 	                        bookPdf.mime = scope.nameFromFile;
 	                        bookPdf.$setPdf(function(info) {
+	                        	ebook.id = info.id;
 	                        	ebook.filename = info.filename;
 	                        	ebook.author = info.author;
 	                        	ebook.title = info.title;
