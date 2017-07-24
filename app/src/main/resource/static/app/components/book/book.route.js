@@ -79,12 +79,12 @@
 		
 		newBook.$inject = ['Book'];
 		function newBook(Book) {
-			return new Book();
+			return {};
 		}
 		
 		editBook.$inject = ['$stateParams', 'Book'];
 		function editBook($stateParams, Book) {
-			return Book.get({id: $stateParams.id}).$promise;
+			return Book.findOne($stateParams.id);
 		}
 		
 		function newTitle() {
@@ -98,22 +98,22 @@
 		
 		getUsers.$inject = ['User'];
 		function getUsers(User) {
-			return User.query().$promise;
+			return User.findAll();
 		}
 		
 		getBooks.$inject = ['Book'];
 		function getBooks(Book) {
-			return Book.query().$promise;
+			return Book.findAll();
 		}
 		
 		getCategories.$inject = ['Category'];
 		function getCategories(Category) {
-			return Category.query().$promise;
+			return Category.findAll();
 		}
 		
 		getLanguages.$inject = ['Language'];
 		function getLanguages(Language) {
-			return Language.query().$promise;
+			return Language.findAll();
 		}
 	}
 })();

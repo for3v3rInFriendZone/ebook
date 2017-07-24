@@ -5,11 +5,10 @@
 		.module('ebook-admin')
 		.controller('AdminUserController', AdminUserController);
 
-	AdminUserController.$inject = ['localStorageService', '$state', 'selectedUser', 'categories', 'listOfUsers'];
-	function AdminUserController(localStorageService, $state, selectedUser, categories, listOfUsers) {
+	AdminUserController.$inject = ['localStorageService', '$state', 'User', 'categories', 'listOfUsers'];
+	function AdminUserController(localStorageService, $state, User, categories, listOfUsers) {
 		
 		var auc = this;
-		auc.user = selectedUser;
 		auc.remove = remove;
 		auc.cancelNewUser = cancelNewUser;
 		auc.saveNewUser = saveNewUser;
@@ -52,7 +51,7 @@
 				auc.user.image = 'https://diasp.eu/assets/user/default.png';
 			}
 			
-			auc.user.$saveOrUpdate(cancelNewUser);
+			User.save(auc.user, cancelNewUser);
 		}
 		
 		function validationOfUsername(username){

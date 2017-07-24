@@ -61,17 +61,17 @@
 		
 		getUsers.$inject = ['User'];
 		function getUsers(User) {
-			return User.query().$promise;
+			return User.findAll();
 		}
 		
 		getUserToEdit.$inject = ['User', '$stateParams'];
 		function getUserToEdit(User, $stateParams) {
-			return User.get({id: $stateParams.id}).$promise;
+			return User.findOne($stateParams.id);
 		}
 		
 		getCategories.$inject = ['Category'];
 		function getCategories(Category) {
-			return Category.query().$promise;
+			return Category.findAll();
 		}
 	}
 })();

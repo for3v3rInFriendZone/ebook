@@ -56,12 +56,12 @@
 	            }
 			}
 			
+			User.save(uec.user, cancel);
 			
-			uec.user.$saveOrUpdate(cancel);
 		}
 		
 		function remove() {
-			uec.user.$delete({id: uec.user.id}, successRemove);
+			User.remove(uec.user.id, successRemove);
 		}
 		
 		function successRemove() {

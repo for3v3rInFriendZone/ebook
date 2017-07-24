@@ -5,8 +5,8 @@
 		.module('ebook-book')
 		.controller('BookController', BookController);
 
-	BookController.$inject = ['$scope', 'localStorageService', '$state', 'book', 'title', 'users', 'categories', 'languages', 'BookPdf'];
-	function BookController($scope, localStorageService, $state, book, title, users, categories, languages, BookPdf) {
+	BookController.$inject = ['$scope', 'localStorageService', '$state', 'book', 'title', 'users', 'categories', 'languages', 'BookPdf', 'Book'];
+	function BookController($scope, localStorageService, $state, book, title, users, categories, languages, BookPdf, Book) {
 		
 		var bcr = this;	
 		
@@ -20,6 +20,10 @@
 		bcr.done = done;
 		bcr.remove = remove;
 		
+		if(bcr.book.id != null && bcr.book.id != undefined) {
+			bcr.edit = true;
+		} 
+		
 		function cancel() {
 			$state.go('main.listBook');
 		}
@@ -32,12 +36,16 @@
 			if(bcr.book.image == null || bcr.book.image == undefined || bcr.book.image == '') {
 				bcr.book.image = 'http://psicoterapeutas.eu/imagenes-psicoterapeutas-eu/Photoxpress_4839887.jpg';
 			}
+			if(bcr.edit) {
+				Book.edit(bcr.book, cancel);
+			} else {
+				Book.save(bcr.book, cancel);
+			}
 			
-			bcr.book.$saveOrUpdate(cancel);
 		}
 		
 		function remove() {
-			bcr.book.$delete({id: bcr.book.id}, successRemoveModal);
+			Book.remove(bcr.book.id, successRemoveModal);
 		}
 		
 		function successRemoveModal() {

@@ -1,10 +1,14 @@
 package com.ebookrepository.app.service;
 
+import java.io.IOException;
+
 import com.ebookrepository.app.model.Ebook;
 
 public interface EbookService {
 
-	public Ebook save(Ebook ebook);
+	public Ebook save(Ebook ebook) throws IOException;
+	
+	public Ebook update(Long id, Ebook ebook);
 	
 	public Ebook findOne(Long id);
 	
@@ -15,5 +19,7 @@ public interface EbookService {
 	public void delete(Ebook ebook);
 	
 	public void deleteAll();
+	
+	public Ebook uploadPDF(Ebook ebook) throws IOException;
 	
 }

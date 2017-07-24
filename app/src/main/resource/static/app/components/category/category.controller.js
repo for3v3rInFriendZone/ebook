@@ -5,8 +5,8 @@
 		.module('ebook-category')
 		.controller('CategoryController', CategoryController);
 
-	CategoryController.$inject = ['localStorageService', '$state', 'category', 'title', 'books', '$stateParams'];
-	function CategoryController(localStorageService, $state, category, title, books, $stateParams) {
+	CategoryController.$inject = ['localStorageService', '$state', 'category', 'title', 'books', '$stateParams', 'Category'];
+	function CategoryController(localStorageService, $state, category, title, books, $stateParams, Category) {
 		
 		var ccr = this;	
 		
@@ -46,11 +46,11 @@
 				return;
 			}
 			
-			ccr.category.$saveOrUpdate(cancel);
+			Category.save(ccr.category, cancel);
 		}
 		
 		function remove() {
-			ccr.category.$delete({id: ccr.category.id}, successRemoveModal, anotherCategory);
+			Category.remove(ccr.category.id, successRemoveModal, anotherCategory);
 		}
 		
 		function anotherCategory() {

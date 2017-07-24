@@ -61,12 +61,12 @@
 		
 		getUsers.$inject = ['User'];
 		function getUsers(User) {
-			return User.query().$promise;
+			return User.findAll();
 		}
 		
 		getBooks.$inject = ['Book'];
 		function getBooks(Book) {
-			return Book.query().$promise;
+			return Book.findAll();
 		}
 	}
 })();
