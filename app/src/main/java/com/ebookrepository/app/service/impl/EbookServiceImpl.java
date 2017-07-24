@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Base64;
+import java.util.Base64; 
 import java.util.ResourceBundle;
 
 import org.apache.lucene.document.Document;
@@ -43,7 +43,7 @@ public class EbookServiceImpl implements EbookService{
 		
 		Document[] docs = indexer.getAllDocuments();
 		for(Document doc : docs) {
-			if(ebook.getId().toString().equals(doc.get("id"))) {
+			if(ebook.getMime().equals(doc.get("fileName"))) {
 				TextField title = new TextField("title", ebook.getTitle(), Store.YES);
 				TextField author = new TextField("author", ebook.getAuthor(), Store.YES);
 				TextField keyword = new TextField("keyword", ebook.getKeywords(), Store.YES);
@@ -119,6 +119,41 @@ public class EbookServiceImpl implements EbookService{
 		ebook.setKeywords(keywords);
 		
 		return ebook;
+	}
+
+	@Override
+	public Ebook update(Long id, Ebook ebook) {
+		
+		Ebook editedBook = ebookRepo.findOne(id);
+		
+		editedBook.setTitle(ebook.getTitle());
+		editedBook.setAuthor(ebook.getAuthor());
+		editedBook.setKeywords(ebook.getKeywords());
+		editedBook.setPublication_year(ebook.getPublication_year());
+		editedBook.setFilename(ebook.getFilename());
+		editedBook.setMime(ebook.getMime());
+		editedBook.setImage(ebook.getImage());
+		editedBook.setCategory(ebook.getCategory());
+		editedBook.setLanguage(ebook.getLanguage());
+		editedBook.setUser(ebook.getUser());
+		
+		UDDIndexer indexer = IndexManager.getInstance();
+		
+		Document[] docs = indexer.getAllDocuments();
+		for(Document doc : docs) {
+			if(ebook.getFilename().equals(doc.get("fileName"))) {
+				Document docCopy = doc;
+				TextField title = new TextField("title", editedBook.getTitle(), Store.YES);
+				TextField author = new TextField("author", editedBook.getAuthor(), Store.YES);
+				TextField keyword = new TextField("keyword", editedBook.getKeywords(), Store.YES);
+				indexer.updateDocument(doc, title, author, keyword);
+				break;
+			}
+		}
+		
+		ebookRepo.save(editedBook);
+		
+		return editedBook;
 	}
 
 }

@@ -14,6 +14,13 @@
 					callback();
 				});
 			},
+			edit: function(book, callback) {
+				var restangularObj = Restangular.one('book', book.id);
+				_.extend(restangularObj, book);
+				return restangularObj.put().then(function(data) {
+					callback();
+				});
+			},
 			findAll: function() {
 				return Restangular.all('book').getList();
 			},

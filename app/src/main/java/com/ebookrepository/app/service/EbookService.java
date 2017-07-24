@@ -8,6 +8,8 @@ public interface EbookService {
 
 	public Ebook save(Ebook ebook) throws IOException;
 	
+	public Ebook update(Long id, Ebook ebook);
+	
 	public Ebook findOne(Long id);
 	
 	public Iterable<Ebook> findAll();

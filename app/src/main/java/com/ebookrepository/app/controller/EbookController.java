@@ -84,21 +84,7 @@ public class EbookController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Ebook> editBook(@PathVariable("id") Long id, @RequestBody Ebook ebook) throws IOException {
 
-		Ebook editedBook = bookSer.findOne(id);
-		
-		editedBook.setTitle(ebook.getTitle());
-		editedBook.setAuthor(ebook.getAuthor());
-		editedBook.setKeywords(ebook.getKeywords());
-		editedBook.setPublication_year(ebook.getPublication_year());
-		editedBook.setFilename(ebook.getFilename());
-		editedBook.setMime(ebook.getMime());
-		editedBook.setImage(ebook.getImage());
-		editedBook.setCategory(ebook.getCategory());
-		editedBook.setLanguage(ebook.getLanguage());
-		editedBook.setUser(ebook.getUser());
-		
-		bookSer.save(editedBook);
-		return new ResponseEntity<Ebook>(editedBook, HttpStatus.OK);
+		return new ResponseEntity<Ebook>(bookSer.update(id, ebook), HttpStatus.OK);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
